@@ -1,6 +1,6 @@
 .tickerWrap {
   width: 100%;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  background-color: var(--color-primary);
   color: var(--color-text-inverse);
   padding: 0.5rem 0;
   overflow: hidden;

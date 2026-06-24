@@ -1,29 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Premium Tech-Forward Palette */
-  --color-primary: #312E81;
-  --color-primary-hover: #4338CA;
-  --color-accent: #EC4899;
-  --color-accent-hover: #BE185D;
+  /* Premium Navy & Gold — inspired by mountain sunset */
+  --color-primary: #0B1D32;
+  --color-primary-hover: #163A5C;
+  --color-accent: #D4953A;
+  --color-accent-hover: #B87D2E;
 
   --color-bg: #FFFFFF;
-  --color-bg-subtle: #F9FAFB;
-  --color-bg-muted: #F3F4F6;
-  --color-bg-dark: #111827;
-  --color-bg-dark-subtle: #1F2937;
+  --color-bg-subtle: #FDFBF7;
+  --color-bg-muted: #F5F1EB;
+  --color-bg-dark: #0B1D32;
+  --color-bg-dark-subtle: #122B45;
 
-  --color-text: #0F172A;
-  --color-text-secondary: #475569;
-  --color-text-tertiary: #94A3B8;
+  --color-text: #111111;
+  --color-text-secondary: #3D3D3D;
+  --color-text-tertiary: #7A7A7A;
   --color-text-inverse: #FFFFFF;
 
-  --color-border: #E2E8F0;
-  --color-border-subtle: #F1F5F9;
-  --color-border-dark: #334155;
+  --color-border: #E8E2D9;
+  --color-border-subtle: #F2EDE5;
+  --color-border-dark: #1E3852;
 
-  --color-success: #10B981;
-  --color-error: #EF4444;
+  --color-success: #2E8B57;
+  --color-error: #C0392B;
 
   /* Typography */
   --font-heading: 'Outfit', system-ui, sans-serif;
@@ -40,12 +40,12 @@
   --radius-xl: 24px;
   --radius-full: 9999px;
 
-  /* Modern Shadows */
-  --shadow-xs: 0 2px 4px rgba(49, 46, 129, 0.04);
-  --shadow-sm: 0 4px 6px rgba(49, 46, 129, 0.05), 0 1px 3px rgba(49, 46, 129, 0.03);
-  --shadow-md: 0 10px 15px -3px rgba(49, 46, 129, 0.08), 0 4px 6px -2px rgba(49, 46, 129, 0.04);
-  --shadow-lg: 0 20px 25px -5px rgba(49, 46, 129, 0.1), 0 10px 10px -5px rgba(49, 46, 129, 0.04);
-  --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.2);
+  /* Shadows — warm depth */
+  --shadow-xs: 0 2px 4px rgba(11, 29, 50, 0.06);
+  --shadow-sm: 0 4px 6px rgba(11, 29, 50, 0.07), 0 1px 3px rgba(11, 29, 50, 0.04);
+  --shadow-md: 0 10px 15px -3px rgba(11, 29, 50, 0.10), 0 4px 6px -2px rgba(11, 29, 50, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(11, 29, 50, 0.12), 0 10px 10px -5px rgba(11, 29, 50, 0.05);
+  --shadow-glow: 0 0 24px rgba(212, 149, 58, 0.3);
 
   /* Transitions */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -311,9 +311,9 @@ img {
 .mesh-bg {
   background-color: #ffffff;
   background-image: 
-    radial-gradient(at 40% 20%, hsla(250,100%,92%,1) 0px, transparent 50%),
-    radial-gradient(at 80% 0%, hsla(189,100%,92%,1) 0px, transparent 50%),
-    radial-gradient(at 0% 50%, hsla(333,100%,92%,1) 0px, transparent 50%);
+    radial-gradient(at 40% 20%, hsla(38, 60%, 92%, 1) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsla(200, 40%, 92%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(30, 50%, 92%, 1) 0px, transparent 50%);
 }
 
 .text-gradient {

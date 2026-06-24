@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand */}
           <div className={styles.brand}>
             <h3 className={styles.brandName}>Shree Narayan</h3>
-            <p className={styles.brandSub}>Higher Secondary School</p>
+            <p className={styles.brandSub}>Madhyamik Vidyalaya</p>
             <p className={styles.desc}>
               Providing quality education from ECD to Grade 12 in Ishworpur Municipality, Sarlahi, Nepal.
             </p>
@@ -66,7 +66,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className={styles.bottom}>
-          <p>&copy; {new Date().getFullYear()} Shree Narayan Higher Secondary School. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Shree Narayan Madhyamik Vidyalaya. All rights reserved.</p>
         </div>
       </div>
     </footer>

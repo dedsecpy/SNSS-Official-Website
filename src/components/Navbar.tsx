@@ -29,7 +29,7 @@ export default function Navbar() {
             style={{ objectFit: "contain", borderRadius: "50%" }}
           />
           <span className={styles.logoText}>
-            Shree Narayan <span className={styles.logoTextSub}>Higher Secondary School</span>
+            Shree Narayan <span className={styles.logoTextSub}>Madhyamik Vidyalaya</span>
           </span>
         </Link>
 

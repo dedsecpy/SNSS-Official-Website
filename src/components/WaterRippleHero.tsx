@@ -1,20 +1,22 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import FadeInUp from "@/components/FadeInUp";
-import styles from "@/app/page.module.css";
+import { ArrowRight, MapPin } from "lucide-react";
+import styles from "./WaterRippleHero.module.css";
 
 export default function WaterRippleHero() {
   const heroRef = useRef<HTMLElement>(null);
+  const [entered, setEntered] = useState(false);
 
   useEffect(() => {
+    const t = setTimeout(() => setEntered(true), 300);
+
     let scriptJquery: HTMLScriptElement;
     let scriptRipples: HTMLScriptElement;
 
     const init = async () => {
-      // 1. Load jQuery if not present
       if (!(window as any).jQuery) {
         await new Promise((resolve) => {
           scriptJquery = document.createElement("script");
@@ -24,24 +26,23 @@ export default function WaterRippleHero() {
         });
       }
 
-      // 2. Load jQuery.ripples if not present
       if (!(window as any).jQuery.fn.ripples) {
         await new Promise((resolve) => {
           scriptRipples = document.createElement("script");
-          scriptRipples.src = "https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js";
+          scriptRipples.src =
+            "https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js";
           scriptRipples.onload = resolve;
           document.head.appendChild(scriptRipples);
         });
       }
 
-      // 3. Initialize ripples
       if (heroRef.current && (window as any).jQuery) {
         const $ = (window as any).jQuery;
         try {
           $(heroRef.current).ripples({
             resolution: 512,
             dropRadius: 20,
-            perturbance: 0.04,
+            perturbance: 0.03,
             interactive: true,
           });
         } catch (e) {
@@ -53,61 +54,91 @@ export default function WaterRippleHero() {
     init();
 
     return () => {
-      if (heroRef.current && (window as any).jQuery && (window as any).jQuery.fn.ripples) {
+      clearTimeout(t);
+      if (
+        heroRef.current &&
+        (window as any).jQuery &&
+        (window as any).jQuery.fn.ripples
+      ) {
         const $ = (window as any).jQuery;
         try {
           $(heroRef.current).ripples("destroy");
         } catch (e) {}
       }
-      // Optional: remove scripts if you want, but usually leaving them is fine
     };
   }, []);
 
-  return (
-    <section 
-      ref={heroRef}
-      className={`${styles.hero}`}
-      style={{ 
-        position: 'relative', 
-        overflow: 'hidden',
-        // jQuery ripples requires a background image to distort
-        backgroundImage: 'url("https://images.unsplash.com/photo-1557683311-eac922347aa1?q=80&w=2000&auto=format&fit=crop")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
-      {/* Overlay to ensure text readability over the background image */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        backgroundColor: 'rgba(255, 255, 255, 0.75)',
-        zIndex: 0
-      }} />
+  /* Word-by-word animation (safe for Devanagari) */
+  const line1Words = ["श्री", "नारायण"];
+  const line2Words = ["माध्यमिक", "विद्यालय"];
 
-      <div className={`container ${styles.heroInner}`} style={{ position: "relative", zIndex: 10 }}>
-        <FadeInUp delay={0.1}>
-          <h1 className={`${styles.heroTitle}`}>
-            श्री नारायण <span className="text-gradient">उच्च माध्यमिक विद्यालय</span>
-          </h1>
-        </FadeInUp>
-        <FadeInUp delay={0.2}>
-          <p className={`${styles.heroSubtitle}`}>
-            Shree Narayan Higher Secondary School provides
-          </p>
-        </FadeInUp>
-        <FadeInUp delay={0.3}>
-          <p className={`${styles.heroSubtitle}`}>
-            quality education from ECD to Grade 12 in Sarlahi.
-          </p>
-        </FadeInUp>
-        <FadeInUp delay={0.4}>
-          <div className={styles.heroAction}>
-            <Link href="/admission" className={styles.heroCta}>
-              Apply Now <ArrowRight size={18} />
-            </Link>
-          </div>
-        </FadeInUp>
+  return (
+    <section
+      ref={heroRef}
+      className={`${styles.hero} ${entered ? styles.entered : ""}`}
+    >
+      {/* Background mountain photo */}
+      <Image
+        src="/new.jpg"
+        alt="Himalayan Mountain Range, Nepal"
+        fill
+        priority
+        style={{ objectFit: "cover", objectPosition: "center 35%" }}
+        className={styles.bgImage}
+      />
+
+      {/* Cinematic overlay */}
+      <div className={styles.overlay} />
+
+      {/* Letterbox bars */}
+      <div className={`${styles.letterboxTop} ${entered ? styles.lbHide : ""}`} />
+      <div className={`${styles.letterboxBot} ${entered ? styles.lbHide : ""}`} />
+
+      {/* Content */}
+      <div className={styles.inner}>
+        {/* Devanagari name — single line, word-by-word reveal */}
+        <h1 className={`${styles.titleHindi} ${entered ? styles.titleIn : ""}`}>
+          <span className={styles.wordLine}>
+            {[...line1Words, ...line2Words].map((word, i) => (
+              <span
+                key={`w-${i}`}
+                className={styles.word}
+                style={{ transitionDelay: `${0.6 + i * 0.15}s` }}
+              >
+                {word}
+              </span>
+            ))}
+          </span>
+        </h1>
+
+        {/* Accent line */}
+        <span className={`${styles.dividerLine} ${entered ? styles.dividerIn : ""}`} />
+
+        {/* English name */}
+        <p className={`${styles.titleEnglish} ${entered ? styles.engIn : ""}`}>
+          Shree Narayan Madhyamik Vidyalaya
+        </p>
+
+        {/* Tagline */}
+        <p className={`${styles.tagline} ${entered ? styles.tagIn : ""}`}>
+          Quality education from ECD to Grade 12 in Sarlahi, Nepal
+        </p>
+
+        {/* Location badge */}
+        <div className={`${styles.locationBadge} ${entered ? styles.locIn : ""}`}>
+          <MapPin size={14} />
+          <span>Sarlahi, Madhesh Pradesh</span>
+        </div>
+
+        {/* CTA */}
+        <div className={`${styles.actions} ${entered ? styles.actIn : ""}`}>
+          <Link href="/admission" className={styles.ctaPrimary}>
+            Apply for Admission <ArrowRight size={16} />
+          </Link>
+          <Link href="/about" className={styles.ctaSecondary}>
+            Learn More
+          </Link>
+        </div>
       </div>
     </section>
   );
