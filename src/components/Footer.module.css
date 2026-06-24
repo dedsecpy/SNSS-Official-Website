@@ -1,0 +1,149 @@
+.footer {
+  background: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+  padding-top: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.4), transparent);
+}
+
+.inner {
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.5fr 2fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* Brand */
+.brand {
+  max-width: 280px;
+}
+
+.brandName {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-inverse);
+  margin-bottom: 0.125rem;
+}
+
+.brandSub {
+  font-size: 0.8125rem;
+  color: #737373;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+}
+
+.desc {
+  font-size: 0.875rem;
+  color: #a3a3a3;
+  line-height: 1.7;
+}
+
+/* Headings */
+.heading {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #737373;
+  margin-bottom: 1.25rem;
+}
+
+/* Links */
+.linkList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.link {
+  color: #a3a3a3;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  display: inline-block;
+}
+
+.link:hover {
+  color: var(--color-text-inverse);
+  transform: translateX(4px);
+}
+
+/* Contact */
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  color: #a3a3a3;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.contactIcon {
+  color: #525252;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.mapContainer {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border-dark);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.mapContainer iframe {
+  display: block;
+  width: 100%;
+}
+
+/* Bottom */
+.bottom {
+  border-top: 1px solid var(--color-border-dark);
+  padding: 1.5rem 0;
+  text-align: center;
+  color: #525252;
+  font-size: 0.8125rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

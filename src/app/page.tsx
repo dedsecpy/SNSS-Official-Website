@@ -1,66 +1,340 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./page.module.css";
+import { ArrowRight, GraduationCap, BookOpen, Users, Award, Microscope, Trophy, Quote } from "lucide-react";
+import FadeInUp from "@/components/FadeInUp";
+import FacultySlider from "@/components/FacultySlider";
+import NoticesSidebar from "@/components/NoticesSidebar";
+import WaterRippleHero from "@/components/WaterRippleHero";
+import EventsCarousel from "@/components/EventsCarousel";
+
+export const revalidate = 0;
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main>
+      {/* ─── Hero ─── */}
+      <WaterRippleHero />
+
+      {/* ─── Social Proof ─── */}
+      <section className={styles.proof}>
+        <FadeInUp delay={0.1}>
+          <p className={styles.proofLabel}>Trusted by students and families across Nepal</p>
+          <div className={styles.marqueeWrapper}>
+            <div className={styles.marqueeContent}>
+              <div className={styles.proofItem}>
+                <Award size={22} strokeWidth={1.5} />
+                <span>NEB Affiliated</span>
+              </div>
+              <div className={styles.proofItem}>
+                <GraduationCap size={22} strokeWidth={1.5} />
+                <span>Grade 12 Programs</span>
+              </div>
+              <div className={styles.proofItem}>
+                <BookOpen size={22} strokeWidth={1.5} />
+                <span>3 Academic Streams</span>
+              </div>
+              <div className={styles.proofItem}>
+                <Users size={22} strokeWidth={1.5} />
+                <span>500+ Students</span>
+              </div>
+              <div className={styles.proofItem}>
+                <Trophy size={22} strokeWidth={1.5} />
+                <span>Top SEE Results</span>
+              </div>
+              <div className={styles.proofItem}>
+                <Microscope size={22} strokeWidth={1.5} />
+                <span>Modern Labs</span>
+              </div>
+            </div>
+            {/* Duplicate for infinite scroll */}
+            <div className={styles.marqueeContent} aria-hidden="true">
+              <div className={styles.proofItem}>
+                <Award size={22} strokeWidth={1.5} />
+                <span>NEB Affiliated</span>
+              </div>
+              <div className={styles.proofItem}>
+                <GraduationCap size={22} strokeWidth={1.5} />
+                <span>Grade 12 Programs</span>
+              </div>
+              <div className={styles.proofItem}>
+                <BookOpen size={22} strokeWidth={1.5} />
+                <span>3 Academic Streams</span>
+              </div>
+              <div className={styles.proofItem}>
+                <Users size={22} strokeWidth={1.5} />
+                <span>500+ Students</span>
+              </div>
+              <div className={styles.proofItem}>
+                <Trophy size={22} strokeWidth={1.5} />
+                <span>Top SEE Results</span>
+              </div>
+              <div className={styles.proofItem}>
+                <Microscope size={22} strokeWidth={1.5} />
+                <span>Modern Labs</span>
+              </div>
+            </div>
+          </div>
+        </FadeInUp>
+      </section>
+
+      {/* ─── Main Content with Sidebar ─── */}
+      <div className={`container ${styles.contentWithSidebar}`}>
+        {/* Left: Main Sections */}
+        <div className={styles.mainContent}>
+
+          {/* ─── About Preview ─── */}
+          <section className={`section ${styles.aboutSection}`}>
+            <FadeInUp>
+              <div className={styles.aboutGrid}>
+                <div className={styles.aboutImageWrapper}>
+                  <div className={styles.aboutImage}>
+                    <Image
+                      src="/school.png"
+                      alt="Main School Building"
+                      fill
+                      style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
+                      className={styles.schoolImg}
+                    />
+                    <div className={styles.imageOverlay} />
+                  </div>
+                  <div className={styles.imageDecoration} />
+                </div>
+                <div className={styles.aboutContent}>
+                  <span className="section-label">About Us</span>
+                  <h2 className={styles.aboutTitle}>A legacy of academic excellence in Sarlahi</h2>
+                  <p className={styles.aboutText}>
+                    Established with a vision to provide world-class education, Shree Narayan Higher Secondary School is one of the most respected institutions in Sarlahi. Founded by experienced educators and community leaders, the school consistently delivers outstanding academic results.
+                  </p>
+                  <p className={styles.aboutText}>
+                    Our approach combines rigorous academics with sports, arts, and character-building activities to develop well-rounded students ready for the future.
+                  </p>
+                  <Link href="/about" className="btn btn-secondary">
+                    Learn more <ArrowRight size={16} />
+                  </Link>
+                </div>
+              </div>
+            </FadeInUp>
+          </section>
+
+          {/* ─── Principal's Message ─── */}
+          <section className={`section ${styles.principalSection}`}>
+            <FadeInUp>
+              <div className={styles.principalGrid}>
+                <div className={styles.principalContent}>
+                  <Quote size={48} className={styles.quoteIcon} />
+                  <h2 className={styles.aboutTitle}>Message from the Principal</h2>
+                  <p className={styles.principalText}>
+                    "At Shree Narayan Higher Secondary School, our mission is to empower students with the knowledge, skills, and values they need to thrive in a rapidly changing world. We believe that education is not just about academic excellence, but about building character and fostering a lifelong love of learning."
+                  </p>
+                  <p className={styles.principalText}>
+                    "Our dedicated faculty and state-of-the-art facilities provide a nurturing environment where every student can discover their true potential. We invite you to join our community and embark on a journey of growth and discovery."
+                  </p>
+                  <div className={styles.principalSignature}>
+                    <div className={styles.principalName}>Mr. Phaniraj Baral</div>
+                    <div className={styles.principalTitle}>Principal, SNHSS</div>
+                  </div>
+                </div>
+                <div className={styles.principalImageWrapper}>
+                  <div className={styles.principalImage}>
+                    <Image
+                      src="/principal-updated.png"
+                      alt="Principal of SNHSS"
+                      fill
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
+                  <div className={styles.principalDecoration} />
+                </div>
+              </div>
+            </FadeInUp>
+          </section>
+
+          {/* ─── Programs ─── */}
+          <section className={`section ${styles.programsSection}`}>
+            <FadeInUp>
+              <div className="section-header">
+                <span className="section-label">Programs</span>
+                <h2 className="section-title">Courses we offer</h2>
+                <p className="section-subtitle">
+                  A complete educational journey from early childhood through higher secondary levels.
+                </p>
+              </div>
+            </FadeInUp>
+
+            <div className={styles.programsGrid}>
+              {/* Science */}
+              <FadeInUp delay={0.1} className={styles.programBento1}>
+                <div className={`${styles.programCard} glass`}>
+                  <div className={styles.programIcon} style={{ background: "rgba(59, 130, 246, 0.1)", color: "#3b82f6" }}>
+                    <Microscope size={28} />
+                  </div>
+                  <h3 className={styles.programTitle}>Science</h3>
+                  <p className={styles.programDesc}>
+                    A rigorous program for students pursuing careers in medicine, engineering, and technology.
+                  </p>
+                  <Link href="/academics" className={styles.programLink}>
+                    Explore <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </FadeInUp>
+
+              {/* Management */}
+              <FadeInUp delay={0.2} className={styles.programBento2}>
+                <div className={`${styles.programCard} glass`}>
+                  <div className={styles.programIcon} style={{ background: "rgba(245, 158, 11, 0.1)", color: "#f59e0b" }}>
+                    <BookOpen size={28} />
+                  </div>
+                  <h3 className={styles.programTitle}>Management</h3>
+                  <p className={styles.programDesc}>
+                    Business education preparing future leaders, entrepreneurs, and corporate professionals.
+                  </p>
+                  <Link href="/academics" className={styles.programLink}>
+                    Explore <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </FadeInUp>
+
+              {/* Education */}
+              <FadeInUp delay={0.3} className={styles.programBento3}>
+                <div className={`${styles.programCard} glass`}>
+                  <div className={styles.programIcon} style={{ background: "rgba(34, 197, 94, 0.1)", color: "#22c55e" }}>
+                    <GraduationCap size={28} />
+                  </div>
+                  <h3 className={styles.programTitle}>Education</h3>
+                  <p className={styles.programDesc}>
+                    Fostering the next generation of educators with modern teaching methodologies.
+                  </p>
+                  <Link href="/academics" className={styles.programLink}>
+                    Explore <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </FadeInUp>
+            </div>
+          </section>
+
+          {/* ─── Why Choose Us (Bento Box) ─── */}
+          <section className={`section ${styles.whySection}`}>
+            <FadeInUp>
+              <div className="section-header">
+                <span className="section-label">Why Shree Narayan</span>
+                <h2 className="section-title">Built for student success</h2>
+                <p className="section-subtitle">
+                  Everything you need for an outstanding educational experience, all in one place.
+                </p>
+              </div>
+            </FadeInUp>
+
+            <div className={styles.whyGrid}>
+              <FadeInUp delay={0.1} className={styles.bento1}>
+                <div className={`${styles.whyCard} ${styles.whyCardPrimary}`}>
+                  <div className={styles.whyCardImageWrapper}>
+                    <Image 
+                      src="https://t3.ftcdn.net/jpg/06/34/75/60/360_F_634756039_Ik9PQVpRvRfe96uTd7PBGXjhN96wT3Yj.jpg" 
+                      alt="Faculty Group"
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      className={styles.whyCardBgImage}
+                    />
+                    <div className={styles.whyCardOverlay} />
+                  </div>
+                  <div className={styles.whyIcon}>
+                    <GraduationCap size={32} />
+                  </div>
+                  <h3 className={styles.whyCardTitle}>Expert Faculty</h3>
+                  <p className={styles.whyCardDesc}>
+                    Highly experienced and dedicated educators committed to student growth. Our teachers use modern methodologies to engage students.
+                  </p>
+                </div>
+              </FadeInUp>
+
+              <FadeInUp delay={0.2} className={styles.bento2}>
+                <div className={`${styles.whyCard} ${styles.whyCardMuted}`}>
+                  <div className={styles.whyIcon}>
+                    <Microscope size={24} />
+                  </div>
+                  <h3 className={styles.whyCardTitle}>Modern Labs</h3>
+                  <p className={styles.whyCardDesc}>
+                    Fully equipped science labs and computer facilities.
+                  </p>
+                </div>
+              </FadeInUp>
+
+              <FadeInUp delay={0.3} className={styles.bento3}>
+                <div className={`${styles.whyCard} ${styles.whyCardSubtle}`}>
+                  <div className={styles.whyIcon}>
+                    <Trophy size={24} />
+                  </div>
+                  <h3 className={styles.whyCardTitle}>Proven Results</h3>
+                  <p className={styles.whyCardDesc}>
+                    Consistently outstanding performance in board examinations.
+                  </p>
+                </div>
+              </FadeInUp>
+
+              <FadeInUp delay={0.4} className={styles.bento4}>
+                <div className={`${styles.whyCard} glass`}>
+                  <div className={styles.whyContentRow}>
+                    <div className={styles.whyIcon}>
+                      <Users size={24} />
+                    </div>
+                    <div>
+                      <h3 className={styles.whyCardTitle}>Holistic Growth</h3>
+                      <p className={styles.whyCardDesc}>
+                        Focus on sports, arts, debates, and extracurricular development.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </FadeInUp>
+            </div>
+          </section>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Right: Notices Sidebar */}
+
+        <NoticesSidebar />
+      </div>
+
+      {/* ─── Happenings / Events Carousel ─── */}
+      <EventsCarousel />
+
+      {/* ─── Faculty Profiles ─── */}
+      <section className="section" style={{ background: "var(--color-bg-subtle)", padding: "5rem 0", borderTop: "1px solid var(--color-border)" }}>
+        <div className="container">
+          <FadeInUp>
+            <div className="section-header" style={{ textAlign: "center" }}>
+              <span className="section-label">Our Team</span>
+              <h2 className="section-title">Meet Our Faculty</h2>
+              <p className="section-subtitle" style={{ maxWidth: "600px", margin: "0 auto" }}>
+                Dedicated professionals committed to excellence in education.
+              </p>
+            </div>
+            <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+              <FacultySlider />
+            </div>
+          </FadeInUp>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* ─── CTA Banner ─── */}
+      <section className={styles.ctaSection}>
+        <div className={`container ${styles.ctaInner}`}>
+          <FadeInUp>
+            <div className={styles.ctaContent}>
+              <h2 className={styles.ctaTitle}>Ready to join us?</h2>
+              <p className={styles.ctaDesc}>
+                Admissions are open for the 2083 BS academic session. Limited seats available.
+              </p>
+            </div>
+          </FadeInUp>
+          <FadeInUp delay={0.2}>
+            <Link href="/admission" className={styles.ctaBtn}>
+              Apply Now <ArrowRight size={18} />
+            </Link>
+          </FadeInUp>
+        </div>
+      </section>
+    </main>
   );
 }
