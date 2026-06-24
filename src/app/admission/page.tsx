@@ -106,7 +106,7 @@ export default function AdmissionPage() {
               )}
 
               <form onSubmit={handleSubmit}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "0.25rem" }}>
+                <div className="form-row">
                   <div className="form-group">
                     <label className="form-label">Student&apos;s Full Name *</label>
                     <input type="text" name="studentName" required value={formData.studentName} onChange={handleChange} className="form-input" placeholder="Full name" />
@@ -117,7 +117,7 @@ export default function AdmissionPage() {
                   </div>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "0.25rem" }}>
+                <div className="form-row">
                   <div className="form-group">
                     <label className="form-label">Grade Applying For *</label>
                     <select name="gradeAppliedFor" required value={formData.gradeAppliedFor} onChange={handleChange} className="form-input">
@@ -136,7 +136,7 @@ export default function AdmissionPage() {
                   </div>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "0.5rem" }}>
+                <div className="form-row" style={{ marginBottom: "0.5rem" }}>
                   <div className="form-group">
                     <label className="form-label">Guardian&apos;s Name *</label>
                     <input type="text" name="guardianName" required value={formData.guardianName} onChange={handleChange} className="form-input" placeholder="Guardian full name" />

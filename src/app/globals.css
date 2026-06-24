@@ -233,6 +233,19 @@ img {
 }
 
 /* ─── Forms ─── */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .form-group {
   margin-bottom: 1.25rem;
 }
