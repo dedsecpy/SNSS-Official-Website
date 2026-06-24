@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import styles from "./WaterRippleHero.module.css";
@@ -11,61 +10,8 @@ export default function WaterRippleHero() {
   const [entered, setEntered] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setEntered(true), 300);
-
-    let scriptJquery: HTMLScriptElement;
-    let scriptRipples: HTMLScriptElement;
-
-    const init = async () => {
-      if (!(window as any).jQuery) {
-        await new Promise((resolve) => {
-          scriptJquery = document.createElement("script");
-          scriptJquery.src = "https://code.jquery.com/jquery-3.6.0.min.js";
-          scriptJquery.onload = resolve;
-          document.head.appendChild(scriptJquery);
-        });
-      }
-
-      if (!(window as any).jQuery.fn.ripples) {
-        await new Promise((resolve) => {
-          scriptRipples = document.createElement("script");
-          scriptRipples.src =
-            "https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js";
-          scriptRipples.onload = resolve;
-          document.head.appendChild(scriptRipples);
-        });
-      }
-
-      if (heroRef.current && (window as any).jQuery) {
-        const $ = (window as any).jQuery;
-        try {
-          $(heroRef.current).ripples({
-            resolution: 512,
-            dropRadius: 20,
-            perturbance: 0.03,
-            interactive: true,
-          });
-        } catch (e) {
-          console.error("Ripples failed to init:", e);
-        }
-      }
-    };
-
-    init();
-
-    return () => {
-      clearTimeout(t);
-      if (
-        heroRef.current &&
-        (window as any).jQuery &&
-        (window as any).jQuery.fn.ripples
-      ) {
-        const $ = (window as any).jQuery;
-        try {
-          $(heroRef.current).ripples("destroy");
-        } catch (e) {}
-      }
-    };
+    const t = setTimeout(() => setEntered(true), 150);
+    return () => clearTimeout(t);
   }, []);
 
   /* Word-by-word animation (safe for Devanagari) */
@@ -77,22 +23,16 @@ export default function WaterRippleHero() {
       ref={heroRef}
       className={`${styles.hero} ${entered ? styles.entered : ""}`}
     >
-      {/* Background mountain photo */}
-      <Image
-        src="/new.jpg"
-        alt="Himalayan Mountain Range, Nepal"
-        fill
-        priority
-        style={{ objectFit: "cover", objectPosition: "center 35%" }}
-        className={styles.bgImage}
-      />
+      {/* Coded Artistic Background */}
+      <div className={styles.codedBg}>
+        <div className={styles.orb1} />
+        <div className={styles.orb2} />
+        <div className={styles.orb3} />
+        <div className={styles.gridOverlay} />
+      </div>
 
       {/* Cinematic overlay */}
       <div className={styles.overlay} />
-
-      {/* Letterbox bars */}
-      <div className={`${styles.letterboxTop} ${entered ? styles.lbHide : ""}`} />
-      <div className={`${styles.letterboxBot} ${entered ? styles.lbHide : ""}`} />
 
       {/* Content */}
       <div className={styles.inner}>
@@ -103,7 +43,7 @@ export default function WaterRippleHero() {
               <span
                 key={`w-${i}`}
                 className={styles.word}
-                style={{ transitionDelay: `${0.6 + i * 0.15}s` }}
+                style={{ transitionDelay: `${0.3 + i * 0.1}s` }}
               >
                 {word}
               </span>
