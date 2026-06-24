@@ -157,53 +157,138 @@
 .aboutGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 5rem;
   align-items: center;
 }
 
 .aboutImageWrapper {
   position: relative;
   z-index: 1;
+  padding: 1.5rem 1.5rem 2rem 2.5rem;
+}
+
+.imageBackdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 85%;
+  height: 90%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border-radius: var(--radius-2xl);
+  opacity: 0.15;
+  z-index: 0;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dotsPattern {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  background-image: radial-gradient(var(--color-primary) 2.5px, transparent 2.5px);
+  background-size: 20px 20px;
+  opacity: 0.25;
+  z-index: 0;
+  border-radius: 50%;
+  animation: rotate 60s linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .aboutImage {
   position: relative;
-  height: 460px;
-  border-radius: var(--radius-xl);
+  height: 520px;
+  border-radius: var(--radius-2xl);
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  border: 6px solid var(--color-bg);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   z-index: 2;
+  transform: translateZ(0); /* Hardware acceleration */
+}
+
+.schoolImg {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .aboutImageWrapper:hover .schoolImg {
-  transform: scale(1.05) !important;
+  transform: scale(1.06) !important;
+}
+
+.aboutImageWrapper:hover .imageBackdrop {
+  transform: translate(-12px, -12px);
+  opacity: 0.25;
 }
 
 .imageOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.5), transparent 40%);
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.5) 0%, transparent 40%);
   z-index: 10;
   pointer-events: none;
 }
 
-.imageDecoration {
+.floatingBadge {
   position: absolute;
-  top: -1.5rem;
-  left: -1.5rem;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  bottom: 1rem;
+  right: -2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 1.25rem 1.75rem;
   border-radius: var(--radius-xl);
-  z-index: -1;
-  opacity: 0.15;
-  transition: all 0.5s ease;
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  z-index: 20;
+  animation: float 5s ease-in-out infinite;
 }
 
-.aboutImageWrapper:hover .imageDecoration {
-  transform: translate(0.75rem, 0.75rem);
-  opacity: 0.25;
+[data-theme="dark"] .floatingBadge {
+  background: rgba(15, 23, 42, 0.85);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.badgeIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: rgba(200, 150, 62, 0.15); /* Primary color with opacity */
+  border-radius: 50%;
+  color: var(--color-primary);
+}
+
+.badgeText {
+  display: flex;
+  flex-direction: column;
+}
+
+.badgeTitle {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.375rem;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.badgeSub {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.1rem;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
 }
 
 .aboutContent {
@@ -211,20 +296,150 @@
   flex-direction: column;
 }
 
-.aboutTitle {
-  font-size: 2.5rem;
+.aboutLabelWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.aboutLabelTag {
+  font-size: 0.875rem;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+}
+
+.aboutLabelLine {
+  height: 2px;
+  width: 50px;
+  background: var(--color-primary);
+  opacity: 0.5;
+}
+
+.aboutTitle {
+  font-size: 2.75rem;
+  font-weight: 800;
   letter-spacing: -0.03em;
   margin-bottom: 1.5rem;
   line-height: 1.15;
 }
 
+.textHighlight {
+  color: var(--color-primary);
+  position: relative;
+  display: inline-block;
+}
+
+.textHighlight::after {
+  content: '';
+  position: absolute;
+  bottom: 0.15em;
+  left: 0;
+  width: 100%;
+  height: 0.3em;
+  background: var(--color-primary);
+  opacity: 0.15;
+  z-index: -1;
+  transform: rotate(-1deg);
+}
+
 .aboutText {
   color: var(--color-text-secondary);
   line-height: 1.8;
-  margin-bottom: 1.25rem;
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+}
+
+.aboutFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.aboutFeatures li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
   font-size: 1.0625rem;
-  text-align: justify;
+  color: var(--color-text-secondary);
+}
+
+.featureIcon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.aboutFeatures strong {
+  color: var(--color-text);
+  font-weight: 650;
+}
+
+.aboutActions {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin-top: 1rem;
+}
+
+.aboutBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  padding: 1rem 1.75rem;
+  border-radius: var(--radius-full);
+  font-weight: 650;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  box-shadow: 0 4px 14px 0 rgba(200, 150, 62, 0.39);
+}
+
+.aboutBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 150, 62, 0.4);
+  background: var(--color-accent);
+}
+
+.aboutStats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.1;
+}
+
+.statLabel {
+  font-size: 0.8125rem;
+  color: var(--color-text-tertiary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+.statDivider {
+  width: 1px;
+  height: 30px;
+  background: var(--color-border);
 }
 
 /* ─── Principal's Message ─── */
@@ -620,20 +835,41 @@
 
   .aboutGrid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 3rem;
+  }
+
+  .aboutImageWrapper {
+    padding: 1rem;
   }
 
   .aboutImage {
-    height: 320px;
+    height: 380px;
+  }
+
+  .floatingBadge {
+    right: 0;
+    bottom: -1rem;
+    padding: 1rem 1.25rem;
+    gap: 1rem;
+  }
+
+  .badgeTitle {
+    font-size: 1.125rem;
+  }
+
+  .badgeIcon {
+    width: 40px;
+    height: 40px;
   }
 
   .aboutContent {
-    padding: 0 1rem;
+    padding: 0;
   }
 
-  .aboutText {
-    text-align: justify;
-    margin: 0 0.5rem 1.25rem 0.5rem;
+  .aboutActions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
   }
 
   .programsGrid, .whyGrid {

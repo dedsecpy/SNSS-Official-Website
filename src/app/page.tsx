@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
-import { ArrowRight, GraduationCap, BookOpen, Users, Award, Microscope, Trophy, Quote } from "lucide-react";
+import { ArrowRight, GraduationCap, BookOpen, Users, Award, Microscope, Trophy, Quote, CheckCircle2 } from "lucide-react";
 import FadeInUp from "@/components/FadeInUp";
 import FacultySlider from "@/components/FacultySlider";
 import NoticesSidebar from "@/components/NoticesSidebar";
@@ -88,30 +88,75 @@ export default function Home() {
             <FadeInUp>
               <div className={styles.aboutGrid}>
                 <div className={styles.aboutImageWrapper}>
+                  <div className={styles.imageBackdrop}></div>
+                  <div className={styles.dotsPattern}></div>
                   <div className={styles.aboutImage}>
                     <Image
                       src="/school.png"
                       alt="Main School Building"
                       fill
-                      style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      style={{ objectFit: "cover" }}
                       className={styles.schoolImg}
                     />
                     <div className={styles.imageOverlay} />
                   </div>
-                  <div className={styles.imageDecoration} />
+                  
+                  {/* Floating Glass Badge */}
+                  <div className={styles.floatingBadge}>
+                    <div className={styles.badgeIcon}>
+                      <Trophy size={24} />
+                    </div>
+                    <div className={styles.badgeText}>
+                      <span className={styles.badgeTitle}>20+ Years</span>
+                      <span className={styles.badgeSub}>Of Excellence</span>
+                    </div>
+                  </div>
                 </div>
+                
                 <div className={styles.aboutContent}>
-                  <span className="section-label">About Us</span>
-                  <h2 className={styles.aboutTitle}>A legacy of academic excellence in Sarlahi</h2>
+                  <div className={styles.aboutLabelWrapper}>
+                    <span className={styles.aboutLabelTag}>Discover Our Heritage</span>
+                    <div className={styles.aboutLabelLine}></div>
+                  </div>
+                  <h2 className={styles.aboutTitle}>
+                    Empowering minds, <span className={styles.textHighlight}>shaping futures</span> in Sarlahi.
+                  </h2>
                   <p className={styles.aboutText}>
                     Established with a vision to provide world-class education, Shree Narayan Higher Secondary School is one of the most respected institutions in Sarlahi. Founded by experienced educators and community leaders, the school consistently delivers outstanding academic results.
                   </p>
-                  <p className={styles.aboutText}>
-                    Our approach combines rigorous academics with sports, arts, and character-building activities to develop well-rounded students ready for the future.
-                  </p>
-                  <Link href="/about" className="btn btn-secondary">
-                    Learn more <ArrowRight size={16} />
-                  </Link>
+                  
+                  <ul className={styles.aboutFeatures}>
+                    <li>
+                      <CheckCircle2 size={20} className={styles.featureIcon} />
+                      <span><strong>Expert Faculty:</strong> Dedicated and highly qualified educators.</span>
+                    </li>
+                    <li>
+                      <CheckCircle2 size={20} className={styles.featureIcon} />
+                      <span><strong>Modern Facilities:</strong> State-of-the-art labs and learning spaces.</span>
+                    </li>
+                    <li>
+                      <CheckCircle2 size={20} className={styles.featureIcon} />
+                      <span><strong>Holistic Approach:</strong> Balancing academics, sports, and arts.</span>
+                    </li>
+                  </ul>
+                  
+                  <div className={styles.aboutActions}>
+                    <Link href="/about" className={styles.aboutBtn}>
+                      Learn More About Us <ArrowRight size={18} />
+                    </Link>
+                    <div className={styles.aboutStats}>
+                      <div className={styles.statItem}>
+                        <span className={styles.statValue}>10k+</span>
+                        <span className={styles.statLabel}>Alumni</span>
+                      </div>
+                      <div className={styles.statDivider}></div>
+                      <div className={styles.statItem}>
+                        <span className={styles.statValue}>100%</span>
+                        <span className={styles.statLabel}>Dedication</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </FadeInUp>
