@@ -143,7 +143,7 @@ export default function AdmissionPage() {
                   </div>
                   <div className="form-group">
                     <label className="form-label">Contact Phone *</label>
-                    <input type="tel" name="contactPhone" required value={formData.contactPhone} onChange={handleChange} className="form-input" placeholder="+977-9800000000" />
+                    <input type="tel" name="contactPhone" required value={formData.contactPhone} onChange={handleChange} className="form-input" placeholder="9854027017" />
                   </div>
                 </div>
 

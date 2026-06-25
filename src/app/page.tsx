@@ -3,8 +3,8 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { ArrowRight, GraduationCap, BookOpen, Users, Award, Microscope, Trophy, Quote, CheckCircle2 } from "lucide-react";
 import FadeInUp from "@/components/FadeInUp";
+import AnimatedNumber from "@/components/AnimatedNumber";
 import FacultySlider from "@/components/FacultySlider";
-import NoticesSidebar from "@/components/NoticesSidebar";
 import WaterRippleHero from "@/components/WaterRippleHero";
 import EventsCarousel from "@/components/EventsCarousel";
 
@@ -108,7 +108,7 @@ export default function Home() {
                       <Trophy size={24} />
                     </div>
                     <div className={styles.badgeText}>
-                      <span className={styles.badgeTitle}>20+ Years</span>
+                      <span className={styles.badgeTitle}><AnimatedNumber endValue={63} />+ Years</span>
                       <span className={styles.badgeSub}>Of Excellence</span>
                     </div>
                   </div>
@@ -167,29 +167,50 @@ export default function Home() {
             <FadeInUp>
               <div className={styles.principalGrid}>
                 <div className={styles.principalContent}>
-                  <Quote size={48} className={styles.quoteIcon} />
-                  <h2 className={styles.aboutTitle}>Message from the Principal</h2>
-                  <p className={styles.principalText}>
-                    "At Shree Narayan Higher Secondary School, our mission is to empower students with the knowledge, skills, and values they need to thrive in a rapidly changing world. We believe that education is not just about academic excellence, but about building character and fostering a lifelong love of learning."
-                  </p>
-                  <p className={styles.principalText}>
-                    "Our dedicated faculty and state-of-the-art facilities provide a nurturing environment where every student can discover their true potential. We invite you to join our community and embark on a journey of growth and discovery."
-                  </p>
+                  <div className={styles.quoteWatermark}>
+                    <Quote size={120} />
+                  </div>
+                  <h2 className={styles.aboutTitle} style={{ position: "relative", zIndex: 2 }}>
+                    Message from the Principal
+                  </h2>
+                  <div className={styles.principalTextWrapper}>
+                    <p className={styles.principalText}>
+                      "At Shree Narayan Higher Secondary School, our mission is to empower students with the knowledge, skills, and values they need to thrive in a rapidly changing world. We believe that education is not just about academic excellence, but about building character and fostering a lifelong love of learning."
+                    </p>
+                    <p className={styles.principalText}>
+                      "Our dedicated faculty and state-of-the-art facilities provide a nurturing environment where every student can discover their true potential. We invite you to join our community and embark on a journey of growth and discovery."
+                    </p>
+                  </div>
                   <div className={styles.principalSignature}>
-                    <div className={styles.principalName}>Mr. Phaniraj Baral</div>
-                    <div className={styles.principalTitle}>Principal, SNHSS</div>
+                    <div className={styles.signatureLine}></div>
+                    <div>
+                      <div className={styles.principalName}>Mr. Phaniraj Baral</div>
+                      <div className={styles.principalTitle}>Principal, Shree Narayan Secondary School</div>
+                    </div>
                   </div>
                 </div>
                 <div className={styles.principalImageWrapper}>
+                  <div className={styles.principalImageBackdrop}></div>
                   <div className={styles.principalImage}>
                     <Image
                       src="/principal-updated.png"
-                      alt="Principal of SNHSS"
+                      alt="Principal of SNSS"
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       style={{ objectFit: "cover" }}
                     />
                   </div>
-                  <div className={styles.principalDecoration} />
+                  
+                  {/* Floating Info Badge for Principal */}
+                  <div className={styles.principalBadge}>
+                    <div className={styles.principalBadgeIcon}>
+                      <Award size={20} />
+                    </div>
+                    <div className={styles.principalBadgeText}>
+                      <span className={styles.principalBadgeTitle}>Visionary Leadership</span>
+                      <span className={styles.principalBadgeSub}>Guiding the future</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </FadeInUp>
@@ -275,10 +296,10 @@ export default function Home() {
                 <div className={`${styles.whyCard} ${styles.whyCardPrimary}`}>
                   <div className={styles.whyCardImageWrapper}>
                     <Image 
-                      src="https://t3.ftcdn.net/jpg/06/34/75/60/360_F_634756039_Ik9PQVpRvRfe96uTd7PBGXjhN96wT3Yj.jpg" 
+                      src="/classroom_enhanced.png" 
                       alt="Faculty Group"
                       fill
-                      style={{ objectFit: 'cover' }}
+                      style={{ objectFit: 'cover', objectPosition: 'center bottom' }}
                       className={styles.whyCardBgImage}
                     />
                     <div className={styles.whyCardOverlay} />
@@ -336,9 +357,6 @@ export default function Home() {
           </section>
         </div>
 
-        {/* Right: Notices Sidebar */}
-
-        <NoticesSidebar />
       </div>
 
       {/* ─── Happenings / Events Carousel ─── */}

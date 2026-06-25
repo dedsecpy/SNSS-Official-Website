@@ -56,7 +56,7 @@ export default function WaterRippleHero() {
 
         {/* English name */}
         <p className={`${styles.titleEnglish} ${entered ? styles.engIn : ""}`}>
-          Shree Narayan Madhyamik Vidyalaya
+          Shree Narayan Secondary School
         </p>
 
         {/* Tagline */}

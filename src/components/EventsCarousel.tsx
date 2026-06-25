@@ -8,43 +8,43 @@ import FadeInUp from "./FadeInUp";
 const initialEvents = [
   {
     id: 1,
-    dateDay: "04",
-    dateMonth: "MAR",
-    title: "Science Exhibition 2026 Winners Announced",
-    description: "Our students showcased exceptional projects at the annual district level science exhibition...",
-    image: "https://images.unsplash.com/photo-1564410267841-915d8e4d71ea?w=600&q=80"
+    dateDay: "12",
+    dateMonth: "MAY",
+    title: "National Cadet Corps (NCC) Program",
+    description: "Students participating in the NCC training program with officials, promoting discipline and leadership.",
+    image: "/event-1.jpg"
   },
   {
     id: 2,
-    dateDay: "27",
-    dateMonth: "FEB",
-    title: "SNHSS Wins District Football Championship",
-    description: "A thrilling final match resulted in a 2-1 victory for our senior boys football team...",
-    image: "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?w=600&q=80"
+    dateDay: "08",
+    dateMonth: "MAY",
+    title: "Women's Sports Team Excellence",
+    description: "Our outstanding girls' sports team proudly representing SNSS in regional tournaments.",
+    image: "/event-2.jpg"
   },
   {
     id: 3,
-    dateDay: "25",
-    dateMonth: "FEB",
-    title: "Annual Cultural Fest 'Sanskriti' a Huge Success",
-    description: "Students from all grades participated in various traditional dances and musical performances...",
-    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80"
+    dateDay: "24",
+    dateMonth: "APR",
+    title: "Taekwondo Championship Winners",
+    description: "Proud students showcasing their medals from the 25th ITF Taekwondo National Championship.",
+    image: "/event-3.jpg"
   },
   {
     id: 4,
     dateDay: "15",
-    dateMonth: "FEB",
-    title: "Guest Lecture by Renowned Scientist",
-    description: "Dr. Sharma visited our campus to speak about the future of renewable energy and inspire young minds...",
-    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80"
+    dateMonth: "APR",
+    title: "Faculty Cultural Celebration",
+    description: "Our dedicated faculty members gathering to celebrate a vibrant cultural event at the school premises.",
+    image: "/event-4.jpg"
   },
   {
     id: 5,
-    dateDay: "10",
-    dateMonth: "FEB",
-    title: "New Computer Lab Inauguration",
-    description: "We are proud to announce the opening of our new state-of-the-art computer laboratory...",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80"
+    dateDay: "02",
+    dateMonth: "APR",
+    title: "Annual Sports Day Prize Distribution",
+    description: "Honoring our top athletes and sports teams for their incredible performance in the annual sports meet.",
+    image: "/event-5.jpg"
   }
 ];
 
@@ -75,7 +75,7 @@ export default function EventsCarousel() {
     <section className={styles.carouselSection}>
       <div className="container">
         <FadeInUp>
-          <h2 className={styles.sectionTitle}>HAPPENINGS AT SNHSS</h2>
+          <h2 className={styles.sectionTitle}>HAPPENINGS AT SNSS</h2>
         </FadeInUp>
         
         <div className={styles.carouselWrapper}>

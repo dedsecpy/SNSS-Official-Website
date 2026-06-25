@@ -57,22 +57,18 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 style={{ fontWeight: 600, fontSize: "0.9375rem", marginBottom: "0.125rem" }}>Phone</h3>
-                    <p style={{ color: "var(--color-text-secondary)", fontSize: "0.875rem" }}>+977-9808008735</p>
+                    <p style={{ color: "var(--color-text-secondary)", fontSize: "0.875rem" }}>9854027017</p>
                   </div>
                 </div>
 
-                <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
-                  <div style={{
-                    width: 42, height: 42, borderRadius: "var(--radius-md)",
-                    background: "var(--color-bg-muted)", color: "var(--color-text)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    flexShrink: 0
-                  }}>
+                {/* Email */}
+                <div style={{ display: "flex", alignItems: "flex-start", gap: "1rem" }}>
+                  <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "var(--color-bg-muted)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--color-primary)", flexShrink: 0 }}>
                     <Mail size={20} />
                   </div>
                   <div>
-                    <h3 style={{ fontWeight: 600, fontSize: "0.9375rem", marginBottom: "0.125rem" }}>Email</h3>
-                    <p style={{ color: "var(--color-text-secondary)", fontSize: "0.875rem" }}>info@shreenarayan.edu.np</p>
+                    <h3 style={{ fontSize: "1.0625rem", fontWeight: "600", marginBottom: "0.25rem", color: "var(--color-text)" }}>Email Us</h3>
+                    <p style={{ color: "var(--color-text-secondary)", fontSize: "0.875rem" }}>narayanssks@gmail.com</p>
                   </div>
                 </div>
               </div>

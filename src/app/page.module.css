@@ -141,7 +141,7 @@
 .contentWithSidebar {
   display: flex;
   align-items: flex-start;
-  padding: 5rem 0;
+  padding: 3.5rem 0;
   position: relative;
 }
 
@@ -150,7 +150,7 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 6rem;
+  gap: 1.5rem;
 }
 
 /* ─── About ─── */
@@ -443,79 +443,181 @@
 }
 
 /* ─── Principal's Message ─── */
+.principalSection {
+  position: relative;
+  overflow: hidden;
+}
+
 .principalGrid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 4rem;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 5rem;
   align-items: center;
-  background: var(--color-bg-subtle);
-  padding: 4rem;
-  border-radius: var(--radius-2xl);
+  background: linear-gradient(to right, var(--color-bg-subtle), transparent);
+  padding: 5rem 4rem;
+  border-radius: var(--radius-3xl);
   border: 1px solid var(--color-border);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.02);
+  position: relative;
 }
 
 .principalContent {
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 2;
 }
 
-.quoteIcon {
+.quoteWatermark {
+  position: absolute;
+  top: -3rem;
+  left: -2rem;
   color: var(--color-primary);
-  opacity: 0.2;
-  margin-bottom: 1rem;
+  opacity: 0.08;
+  z-index: 1;
+  transform: rotate(-10deg);
+  pointer-events: none;
+}
+
+.principalTextWrapper {
+  position: relative;
+  z-index: 2;
+  border-left: 3px solid rgba(200, 150, 62, 0.3); /* Primary color with opacity */
+  padding-left: 1.5rem;
+  margin-left: 0.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .principalText {
   color: var(--color-text-secondary);
-  line-height: 1.8;
+  line-height: 1.85;
   font-size: 1.125rem;
   font-style: italic;
   margin-bottom: 1.5rem;
 }
 
+.principalText:last-child {
+  margin-bottom: 0;
+}
+
 .principalSignature {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
   margin-top: 1rem;
-  border-left: 3px solid var(--color-primary);
-  padding-left: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.signatureLine {
+  width: 40px;
+  height: 2px;
+  background: var(--color-primary);
 }
 
 .principalName {
-  font-weight: 700;
-  font-size: 1.25rem;
+  font-weight: 800;
+  font-size: 1.375rem;
   color: var(--color-text);
   font-family: var(--font-heading);
+  letter-spacing: -0.02em;
 }
 
 .principalTitle {
-  color: var(--color-text-tertiary);
+  color: var(--color-primary);
   font-size: 0.9375rem;
-  font-weight: 500;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
 }
 
 .principalImageWrapper {
   position: relative;
   z-index: 1;
+  padding: 1rem 2.5rem 1rem 1rem;
+}
+
+.principalImageBackdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 95%;
+  background: var(--color-primary);
+  border-radius: var(--radius-2xl);
+  opacity: 0.1;
+  z-index: 0;
+  transform: rotate(3deg);
+  transition: all 0.5s ease;
 }
 
 .principalImage {
   position: relative;
-  height: 480px;
-  border-radius: var(--radius-xl);
+  height: 540px;
+  border-radius: var(--radius-2xl);
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
   z-index: 2;
+  border: 4px solid var(--color-bg);
+  transition: transform 0.5s ease;
 }
 
-.principalDecoration {
+.principalImageWrapper:hover .principalImage {
+  transform: translateY(-10px);
+}
+
+.principalImageWrapper:hover .principalImageBackdrop {
+  transform: rotate(5deg) scale(1.02);
+  opacity: 0.15;
+}
+
+.principalBadge {
   position: absolute;
-  bottom: -1.5rem;
-  right: -1.5rem;
-  width: 100%;
-  height: 100%;
-  border: 2px dashed var(--color-primary);
+  bottom: -1rem;
+  left: -2rem;
+  background: var(--color-bg);
+  padding: 1.25rem 1.5rem;
   border-radius: var(--radius-xl);
-  z-index: 1;
-  opacity: 0.3;
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  z-index: 20;
+  border: 1px solid var(--color-border);
+}
+
+.principalBadgeIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border-radius: 50%;
+  color: var(--color-text-inverse);
+}
+
+.principalBadgeText {
+  display: flex;
+  flex-direction: column;
+}
+
+.principalBadgeTitle {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.principalBadgeSub {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.15rem;
 }
 
 /* ─── Programs ─── */
@@ -674,11 +776,13 @@
 }
 
 .whyCardMuted {
-  background: var(--color-bg-muted);
+  background: #F0F4F8;
+  border-color: rgba(11, 29, 50, 0.05);
 }
 
 .whyCardSubtle {
-  background: var(--color-bg-subtle);
+  background: #FFF9F0;
+  border-color: rgba(212, 149, 58, 0.1);
 }
 
 .whyIcon {
@@ -825,12 +929,30 @@
 
   .principalGrid {
     grid-template-columns: 1fr;
-    padding: 2rem;
-    gap: 3rem;
+    padding: 2.5rem 1.5rem;
+    gap: 4rem;
+    background: var(--color-bg-subtle);
+  }
+
+  .principalImageWrapper {
+    padding: 0 1rem 1rem 0;
   }
 
   .principalImage {
-    height: 380px;
+    height: 420px;
+  }
+
+  .principalBadge {
+    left: 0;
+    bottom: -1.5rem;
+    padding: 1rem 1.25rem;
+    gap: 1rem;
+  }
+  
+  .quoteWatermark {
+    top: -1rem;
+    left: -1rem;
+    transform: scale(0.7) rotate(-10deg);
   }
 
   .aboutGrid {

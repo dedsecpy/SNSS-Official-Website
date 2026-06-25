@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand */}
           <div className={styles.brand}>
             <h3 className={styles.brandName}>Shree Narayan</h3>
-            <p className={styles.brandSub}>Madhyamik Vidyalaya</p>
+            <p className={styles.brandSub}>Secondary School</p>
             <p className={styles.desc}>
               Providing quality education from ECD to Grade 12 in Ishworpur Municipality, Sarlahi, Nepal.
             </p>
@@ -37,11 +37,11 @@ export default function Footer() {
               </div>
               <div className={styles.contactItem}>
                 <Phone size={16} className={styles.contactIcon} />
-                <span>+977-9808008735</span>
+                <span>9854027017</span>
               </div>
               <div className={styles.contactItem}>
                 <Mail size={16} className={styles.contactIcon} />
-                <span>info@shreenarayan.edu.np</span>
+                <span>narayanssks@gmail.com</span>
               </div>
             </div>
           </div>
@@ -66,7 +66,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className={styles.bottom}>
-          <p>&copy; {new Date().getFullYear()} Shree Narayan Madhyamik Vidyalaya. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Shree Narayan Secondary School. All rights reserved.</p>
         </div>
       </div>
     </footer>

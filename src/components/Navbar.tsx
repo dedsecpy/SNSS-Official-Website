@@ -23,13 +23,13 @@ export default function Navbar() {
         <Link href="/" className={styles.logo}>
           <Image
             src="/logo.jpg"
-            alt="SNHSS Logo"
+            alt="SNSS Logo"
             width={36}
             height={36}
             style={{ objectFit: "contain", borderRadius: "50%" }}
           />
           <span className={styles.logoText}>
-            Shree Narayan <span className={styles.logoTextSub}>Madhyamik Vidyalaya</span>
+            Shree Narayan <span className={styles.logoTextSub}>Secondary School</span>
           </span>
         </Link>
 

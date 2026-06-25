@@ -12,8 +12,8 @@ const tiroDevanagari = Tiro_Devanagari_Hindi({ subsets: ["devanagari"], weight: 
 const mukta = Mukta({ subsets: ["devanagari"], weight: ["400", "700", "800"], variable: "--font-mukta" });
 
 export const metadata: Metadata = {
-  title: "Shree Narayan Madhyamik Vidyalaya",
-  description: "Official website of Shree Narayan Madhyamik Vidyalaya, providing quality education from ECD to Grade 12 in Ishworpur Municipality, Sarlahi.",
+  title: "Shree Narayan Secondary School",
+  description: "Official website of Shree Narayan Secondary School, providing quality education from ECD to Grade 12 in Ishworpur Municipality, Sarlahi.",
 };
 
 export default function RootLayout({
