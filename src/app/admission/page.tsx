@@ -27,7 +27,7 @@ export default function AdmissionPage() {
     setErrorMsg("");
 
     try {
-      const response = await fetch("/api/admission", {
+      const response = await fetch("/api/applications", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
