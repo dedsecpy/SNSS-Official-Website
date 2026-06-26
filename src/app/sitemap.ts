@@ -1,12 +1,12 @@
 import { MetadataRoute } from 'next'
 import { prisma } from '@/lib/prisma'
+import { events } from '@/lib/data/events'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.shreenarayan.edu.np'
 
   // Fetch dynamic routes
   const faculties = await prisma.faculty.findMany()
-  const events = await prisma.event.findMany()
   const notices = await prisma.notice.findMany()
 
   // Generate sitemap entries for dynamic routes
@@ -19,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const eventEntries: MetadataRoute.Sitemap = events.map((event) => ({
     url: `${baseUrl}/events/${event.id}`,
-    lastModified: new Date(event.createdAt),
+    lastModified: new Date(event.date),
     changeFrequency: 'weekly',
     priority: 0.7,
   }))
