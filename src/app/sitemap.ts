@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 import { prisma } from '@/lib/prisma'
-import { events } from '@/lib/data/events'
+import { eventsData } from '@/lib/data/events'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.shreenarayan.edu.np'
@@ -17,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
 
-  const eventEntries: MetadataRoute.Sitemap = events.map((event) => ({
+  const eventEntries: MetadataRoute.Sitemap = eventsData.map((event) => ({
     url: `${baseUrl}/events/${event.id}`,
     lastModified: new Date(event.date),
     changeFrequency: 'weekly',
