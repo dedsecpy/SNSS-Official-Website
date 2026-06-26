@@ -1,9 +1,33 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
 import FadeInUp from "@/components/FadeInUp";
 import { prisma } from "@/lib/prisma";
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const faculty = await prisma.faculty.findUnique({ where: { id } });
+  
+  if (!faculty) return {};
+
+  return {
+    title: faculty.name,
+    description: `${faculty.name} - ${faculty.role} at Shree Narayan Secondary School. Department: ${faculty.department}.`,
+    openGraph: {
+      title: `${faculty.name} | Faculty at SNSS`,
+      description: `${faculty.role} in the ${faculty.department} department.`,
+      images: [faculty.image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${faculty.name} | Faculty at SNSS`,
+      description: `${faculty.role} in the ${faculty.department} department.`,
+      images: [faculty.image],
+    }
+  };
+}
 
 export default async function FacultyPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -15,8 +39,26 @@ export default async function FacultyPage({ params }: { params: Promise<{ id: st
     notFound();
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": faculty.name,
+    "jobTitle": faculty.role,
+    "affiliation": {
+      "@type": "EducationalOrganization",
+      "name": "Shree Narayan Secondary School"
+    },
+    "image": `https://www.shreenarayan.edu.np${faculty.image}`,
+    "description": faculty.description || `${faculty.role} at SNSS`,
+    "url": `https://www.shreenarayan.edu.np/faculty/${id}`
+  };
+
   return (
     <main className={styles.facultyPage}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* ─── Top Banner ─── */}
       <div className={styles.banner}>
         <div className="container">
