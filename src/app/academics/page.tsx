@@ -1,3 +1,5 @@
+"use client";
+
 import { GraduationCap, Briefcase, BookOpen, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
