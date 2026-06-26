@@ -7,6 +7,7 @@ import AnimatedNumber from "@/components/AnimatedNumber";
 import FacultySlider from "@/components/FacultySlider";
 import WaterRippleHero from "@/components/WaterRippleHero";
 import EventsCarousel from "@/components/EventsCarousel";
+import FacultyProfiles from "@/components/FacultyProfiles";
 
 export const revalidate = 0;
 
@@ -92,7 +93,7 @@ export default function Home() {
                   <div className={styles.dotsPattern}></div>
                   <div className={styles.aboutImage}>
                     <Image
-                      src="/school.png"
+                      src="/block-A.png"
                       alt="Main School Building"
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
@@ -231,7 +232,7 @@ export default function Home() {
             <div className={styles.programsGrid}>
               {/* Science */}
               <FadeInUp delay={0.1} className={styles.programBento1}>
-                <div className={`${styles.programCard} glass`}>
+                <Link href="/academics/science" className={`${styles.programCard} glass`}>
                   <div className={styles.programIcon} style={{ background: "rgba(59, 130, 246, 0.1)", color: "#3b82f6" }}>
                     <Microscope size={28} />
                   </div>
@@ -239,15 +240,15 @@ export default function Home() {
                   <p className={styles.programDesc}>
                     A rigorous program for students pursuing careers in medicine, engineering, and technology.
                   </p>
-                  <Link href="/academics" className={styles.programLink}>
+                  <div className={styles.programLink}>
                     Explore <ArrowRight size={14} />
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               </FadeInUp>
 
               {/* Management */}
               <FadeInUp delay={0.2} className={styles.programBento2}>
-                <div className={`${styles.programCard} glass`}>
+                <Link href="/academics/management" className={`${styles.programCard} glass`}>
                   <div className={styles.programIcon} style={{ background: "rgba(245, 158, 11, 0.1)", color: "#f59e0b" }}>
                     <BookOpen size={28} />
                   </div>
@@ -255,15 +256,15 @@ export default function Home() {
                   <p className={styles.programDesc}>
                     Business education preparing future leaders, entrepreneurs, and corporate professionals.
                   </p>
-                  <Link href="/academics" className={styles.programLink}>
+                  <div className={styles.programLink}>
                     Explore <ArrowRight size={14} />
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               </FadeInUp>
 
               {/* Education */}
               <FadeInUp delay={0.3} className={styles.programBento3}>
-                <div className={`${styles.programCard} glass`}>
+                <Link href="/academics/education" className={`${styles.programCard} glass`}>
                   <div className={styles.programIcon} style={{ background: "rgba(34, 197, 94, 0.1)", color: "#22c55e" }}>
                     <GraduationCap size={28} />
                   </div>
@@ -271,10 +272,10 @@ export default function Home() {
                   <p className={styles.programDesc}>
                     Fostering the next generation of educators with modern teaching methodologies.
                   </p>
-                  <Link href="/academics" className={styles.programLink}>
+                  <div className={styles.programLink}>
                     Explore <ArrowRight size={14} />
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               </FadeInUp>
             </div>
           </section>
@@ -373,8 +374,11 @@ export default function Home() {
                 Dedicated professionals committed to excellence in education.
               </p>
             </div>
-            <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-              <FacultySlider />
+            <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+              <div style={{ marginBottom: "2rem", maxWidth: "800px", margin: "0 auto" }}>
+                <FacultySlider />
+              </div>
+              <FacultyProfiles />
             </div>
           </FadeInUp>
         </div>

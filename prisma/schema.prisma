@@ -32,3 +32,17 @@ model AdmissionForm {
   status         String   @default("Pending") // "Pending", "Under Review", "Accepted", "Rejected"
   createdAt      DateTime @default(now())
 }
+
+model Faculty {
+  id               String   @id @default(uuid())
+  name             String
+  role             String
+  image            String
+  qualification    String
+  email            String
+  department       String
+  researchInterest String
+  description      String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}

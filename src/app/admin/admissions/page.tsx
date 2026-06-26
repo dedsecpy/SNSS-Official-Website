@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+import styles from "../admin.module.css";
 
 export const revalidate = 0;
 
@@ -25,7 +26,7 @@ export default async function AdminAdmissions() {
     <div>
       <h1 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "2rem", letterSpacing: "-0.02em" }}>Admissions Management</h1>
       
-      <div className="card" style={{ overflow: "hidden", padding: 0 }}>
+      <div className="card" style={{ overflowX: "auto", padding: 0 }}>
         <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left" }}>
           <thead>
             <tr style={{ background: "var(--color-bg-muted)", borderBottom: "1px solid var(--color-border)" }}>

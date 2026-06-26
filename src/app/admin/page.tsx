@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { Users, FileText, CheckCircle } from "lucide-react";
+import styles from "./admin.module.css";
 
 export const revalidate = 0; // Dynamic page
 
@@ -12,7 +13,7 @@ export default async function AdminDashboard() {
     <div>
       <h1 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "2rem", letterSpacing: "-0.02em" }}>Dashboard Overview</h1>
       
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1.5rem", marginBottom: "2rem" }}>
+      <div className={styles.dashboardGrid}>
         <div className="card">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
             <h3 style={{ color: "var(--color-text-secondary)", fontSize: "0.875rem", fontWeight: 500 }}>Total Applications</h3>

@@ -201,7 +201,8 @@
 
 .aboutImage {
   position: relative;
-  height: 520px;
+  width: 100%;
+  aspect-ratio: 5 / 4;
   border-radius: var(--radius-2xl);
   overflow: hidden;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -638,6 +639,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: inherit;
 }
 
 .programCard:hover {
@@ -962,10 +965,6 @@
 
   .aboutImageWrapper {
     padding: 1rem;
-  }
-
-  .aboutImage {
-    height: 380px;
   }
 
   .floatingBadge {

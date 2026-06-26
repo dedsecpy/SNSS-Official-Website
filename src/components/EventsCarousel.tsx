@@ -2,54 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./EventsCarousel.module.css";
 import FadeInUp from "./FadeInUp";
-
-const initialEvents = [
-  {
-    id: 1,
-    dateDay: "12",
-    dateMonth: "MAY",
-    title: "National Cadet Corps (NCC) Program",
-    description: "Students participating in the NCC training program with officials, promoting discipline and leadership.",
-    image: "/event-1.jpg"
-  },
-  {
-    id: 2,
-    dateDay: "08",
-    dateMonth: "MAY",
-    title: "Women's Sports Team Excellence",
-    description: "Our outstanding girls' sports team proudly representing SNSS in regional tournaments.",
-    image: "/event-2.jpg"
-  },
-  {
-    id: 3,
-    dateDay: "24",
-    dateMonth: "APR",
-    title: "Taekwondo Championship Winners",
-    description: "Proud students showcasing their medals from the 25th ITF Taekwondo National Championship.",
-    image: "/event-3.jpg"
-  },
-  {
-    id: 4,
-    dateDay: "15",
-    dateMonth: "APR",
-    title: "Faculty Cultural Celebration",
-    description: "Our dedicated faculty members gathering to celebrate a vibrant cultural event at the school premises.",
-    image: "/event-4.jpg"
-  },
-  {
-    id: 5,
-    dateDay: "02",
-    dateMonth: "APR",
-    title: "Annual Sports Day Prize Distribution",
-    description: "Honoring our top athletes and sports teams for their incredible performance in the annual sports meet.",
-    image: "/event-5.jpg"
-  }
-];
+import { eventsData } from "@/lib/data/events";
 
 export default function EventsCarousel() {
-  const [events, setEvents] = useState(initialEvents);
+  const [events, setEvents] = useState(eventsData);
   const [isSliding, setIsSliding] = useState(false);
 
   useEffect(() => {
@@ -82,9 +41,11 @@ export default function EventsCarousel() {
           <div className={`${styles.carouselTrack} ${isSliding ? styles.sliding : ""}`}>
             {/* Render 4 items so that the upcoming one is ready off-screen */}
             {events.slice(0, 4).map((event, idx) => (
-              <div
+              <Link
                 key={`${event.id}-${idx}`}
+                href={`/events/${event.id}`}
                 className={styles.card}
+                style={{ textDecoration: 'none', color: 'inherit' }}
               >
                 <div className={styles.imageWrapper}>
                   <Image
@@ -102,7 +63,7 @@ export default function EventsCarousel() {
                   <h3 className={styles.cardTitle}>{event.title}</h3>
                   <p className={styles.cardDesc}>{event.description}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

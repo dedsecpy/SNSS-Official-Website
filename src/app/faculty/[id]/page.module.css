@@ -1,0 +1,141 @@
+.facultyPage {
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
+
+/* ─── Top Banner ─── */
+.banner {
+  background-color: var(--color-primary); /* SNSS primary theme */
+  color: white;
+  padding: 6rem 1.5rem 2.5rem; /* Reduced height */
+  text-align: center;
+}
+
+.bannerTitle {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: #FFFFFF; /* Ensure it overrides any global h1 color */
+}
+
+.breadcrumbs {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.breadcrumbLink {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumbLink:hover {
+  text-decoration: underline;
+}
+
+/* ─── Profile Section ─── */
+.profileSection {
+  padding: 4rem 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.profileGrid {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* ─── Left Column (Image) ─── */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+}
+
+/* ─── Right Column (Details) ─── */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.role {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--color-border);
+  margin: 0.5rem 0;
+}
+
+.infoBlock {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.infoLabel {
+  font-weight: 700;
+  color: var(--color-text);
+  font-size: 1rem;
+  min-width: 120px;
+}
+
+.infoValue {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+  flex: 1;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .profileGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .imageContainer {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
+  .name {
+    font-size: 2rem;
+  }
+  
+  .infoBlock {
+    flex-direction: column;
+  }
+}

@@ -1,15 +1,14 @@
 import Link from "next/link";
-import { LayoutDashboard, Users, FileText, LogOut } from "lucide-react";
+import { LayoutDashboard, Users, FileText, LogOut, GraduationCap } from "lucide-react";
 import { isAuthenticated, logout } from "@/lib/auth";
+
+import styles from "./admin.module.css";
 
 export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // If not authenticated, render children without sidebar.
-  // This covers the login page (middleware allows /admin/login without auth).
-  // Protected pages redirect via middleware before reaching this layout.
   const authed = await isAuthenticated();
 
   if (!authed) {
@@ -17,82 +16,44 @@ export default async function AdminLayout({
   }
 
   return (
-    <div style={{ display: "flex", minHeight: "calc(100vh - 64px)", background: "var(--color-bg-subtle)" }}>
+    <div className={styles.adminContainer}>
       {/* Sidebar */}
-      <aside style={{
-        width: "260px",
-        background: "var(--color-bg)",
-        borderRight: "1px solid var(--color-border)",
-        padding: "2rem 1rem",
-        flexShrink: 0,
-        display: "flex",
-        flexDirection: "column",
-      }}>
+      <aside className={styles.sidebar}>
         <h2 style={{
           padding: "0 0.75rem",
           marginBottom: "1.75rem",
           fontSize: "1.0625rem",
           fontWeight: 650,
-          letterSpacing: "-0.01em"
+          letterSpacing: "-0.01em",
+          display: "none", /* hide the title on mobile if needed, or keep it */
         }}>
           Admin Portal
         </h2>
-        <nav style={{ display: "flex", flexDirection: "column", gap: "0.25rem", flex: 1 }}>
-          <Link
-            href="/admin"
-            style={{
-              display: "flex", alignItems: "center", gap: "0.75rem",
-              padding: "0.625rem 0.75rem", borderRadius: "var(--radius-md)",
-              color: "var(--color-text-secondary)", fontWeight: 500, fontSize: "0.9375rem",
-              textDecoration: "none", transition: "all 150ms ease"
-            }}
-          >
-            <LayoutDashboard size={18} /> Dashboard
+        <nav className={styles.nav}>
+          <Link href="/admin" className={styles.navLink}>
+            <LayoutDashboard size={18} /> <span>Dashboard</span>
           </Link>
-          <Link
-            href="/admin/admissions"
-            style={{
-              display: "flex", alignItems: "center", gap: "0.75rem",
-              padding: "0.625rem 0.75rem", borderRadius: "var(--radius-md)",
-              color: "var(--color-text-secondary)", fontWeight: 500, fontSize: "0.9375rem",
-              textDecoration: "none", transition: "all 150ms ease"
-            }}
-          >
-            <Users size={18} /> Admissions
+          <Link href="/admin/admissions" className={styles.navLink}>
+            <Users size={18} /> <span>Admissions</span>
           </Link>
-          <Link
-            href="/admin/notices"
-            style={{
-              display: "flex", alignItems: "center", gap: "0.75rem",
-              padding: "0.625rem 0.75rem", borderRadius: "var(--radius-md)",
-              color: "var(--color-text-secondary)", fontWeight: 500, fontSize: "0.9375rem",
-              textDecoration: "none", transition: "all 150ms ease"
-            }}
-          >
-            <FileText size={18} /> Notices & Blogs
+          <Link href="/admin/notices" className={styles.navLink}>
+            <FileText size={18} /> <span>Notices & Blogs</span>
+          </Link>
+          <Link href="/admin/faculty" className={styles.navLink}>
+            <GraduationCap size={18} /> <span>Faculty Profiles</span>
           </Link>
         </nav>
 
         {/* Logout */}
-        <form action={logout}>
-          <button
-            type="submit"
-            style={{
-              display: "flex", alignItems: "center", gap: "0.75rem",
-              padding: "0.625rem 0.75rem", borderRadius: "var(--radius-md)",
-              color: "var(--color-text-secondary)", fontWeight: 500, fontSize: "0.9375rem",
-              width: "100%", textAlign: "left", cursor: "pointer",
-              background: "none", border: "none", fontFamily: "var(--font-body)",
-              transition: "all 150ms ease"
-            }}
-          >
-            <LogOut size={18} /> Sign out
+        <form action={logout} style={{ marginTop: "auto", paddingTop: "1rem" }}>
+          <button type="submit" className={styles.navLink} style={{ width: "100%", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit" }}>
+            <LogOut size={18} /> <span>Sign out</span>
           </button>
         </form>
       </aside>
 
       {/* Main Content */}
-      <main style={{ flex: 1, padding: "2.5rem", overflowY: "auto" }}>
+      <main className={styles.mainContent}>
         {children}
       </main>
     </div>

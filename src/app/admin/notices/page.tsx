@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+import styles from "../admin.module.css";
 
 export const revalidate = 0;
 
@@ -35,7 +36,7 @@ export default async function AdminNotices() {
     <div>
       <h1 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "2rem", letterSpacing: "-0.02em" }}>Content Management</h1>
       
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "1.5rem" }}>
+      <div className={styles.adminGrid}>
         {/* Create Form */}
         <div className="card" style={{ height: "fit-content" }}>
           <h2 style={{ fontSize: "1.125rem", fontWeight: 650, marginBottom: "1.5rem", letterSpacing: "-0.01em" }}>Create New Post</h2>
