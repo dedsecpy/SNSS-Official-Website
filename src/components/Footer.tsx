@@ -23,7 +23,7 @@ export default function Footer() {
             <h4 className={styles.heading}>Resources</h4>
             <ul className={styles.linkList}>
               <li><Link href="/contact" className={styles.link}>Contact</Link></li>
-              <li><Link href="/admin" className={styles.link}>Staff Portal</Link></li>
+
             </ul>
           </div>
 

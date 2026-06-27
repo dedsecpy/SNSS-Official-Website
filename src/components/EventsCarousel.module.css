@@ -1,7 +1,6 @@
 .carouselSection {
   padding: 5rem 0;
   background-color: var(--color-bg);
-  overflow: hidden;
 }
 
 .sectionTitle {
@@ -15,31 +14,30 @@
 
 .carouselWrapper {
   width: 100%;
-  overflow: hidden; /* Ensures the 4th item is hidden initially */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  padding-bottom: 1rem; /* For shadow clipping */
+  margin-bottom: -1rem;
+}
+
+.carouselWrapper::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Edge */
 }
 
 .carouselTrack {
   display: flex;
   gap: 2rem;
-  width: 100%;
-  /* No transition by default to allow instant snapping back */
-  transform: translateX(0);
-}
-
-/* 
-  When sliding, we translate the track left by exactly one card width + one gap.
-  Since 3 cards fit in 100% with 2 gaps:
-  Card width = calc(33.3333% - 1.3333rem)
-  Gap = 2rem
-  Distance = calc(-33.3333% - 0.6667rem)
-*/
-.carouselTrack.sliding {
-  transition: transform 0.6s ease-in-out;
-  transform: translateX(calc(-33.3333% - 0.6667rem));
+  width: max-content;
+  padding: 0.5rem 0;
 }
 
 .card {
-  flex: 0 0 calc(33.3333% - 1.3333rem);
+  width: calc(33.333vw - 2rem);
+  min-width: 320px;
+  max-width: 400px;
+  scroll-snap-align: start;
   background: var(--color-bg-subtle);
   border-radius: 12px;
   overflow: hidden;
@@ -113,18 +111,15 @@
 
 @media (max-width: 1024px) {
   .card {
-    flex: 0 0 calc(50% - 1rem);
-  }
-  .carouselTrack.sliding {
-    transform: translateX(calc(-50% - 1rem));
+    width: calc(50vw - 2rem);
   }
 }
 
 @media (max-width: 768px) {
   .card {
-    flex: 0 0 100%;
+    width: calc(100vw - 3rem); /* Account for container padding */
   }
-  .carouselTrack.sliding {
-    transform: translateX(calc(-100% - 2rem));
+  .carouselTrack {
+    gap: 1rem;
   }
 }

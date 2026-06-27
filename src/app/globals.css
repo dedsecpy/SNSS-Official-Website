@@ -232,6 +232,18 @@ img {
   transform: translateY(-2px);
 }
 
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 /* ─── Forms ─── */
 .form-row {
   display: grid;

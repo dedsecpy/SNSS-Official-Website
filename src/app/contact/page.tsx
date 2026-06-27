@@ -21,7 +21,7 @@ export default function ContactPage() {
       {/* Content */}
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+          <div className="contact-grid">
             {/* Contact Info */}
             <div className="card" style={{ padding: "2.5rem" }}>
               <h2 style={{ fontSize: "1.25rem", fontWeight: 650, marginBottom: "1.75rem", letterSpacing: "-0.01em" }}>

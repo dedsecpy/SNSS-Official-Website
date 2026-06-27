@@ -122,12 +122,22 @@ export default function AdmissionPage() {
                     <label className="form-label">Grade Applying For *</label>
                     <select name="gradeAppliedFor" required value={formData.gradeAppliedFor} onChange={handleChange} className="form-input">
                       <option value="">Select grade…</option>
-                      <option value="Nursery">Nursery / ECD</option>
-                      <option value="Grade 1">Grade 1</option>
-                      <option value="Grade 8">Grade 8</option>
+                      <option value="+2 Science">+2 Science</option>
+                      <option value="+2 Management">+2 Management</option>
+                      <option value="+2 Education">+2 Education</option>
                       <option value="Grade 10">Grade 10</option>
-                      <option value="Grade 11 - Management">+2 Management</option>
-                      <option value="Grade 11 - Education">+2 Education</option>
+                      <option value="Grade 9">Grade 9</option>
+                      <option value="Grade 8">Grade 8</option>
+                      <option value="Grade 7">Grade 7</option>
+                      <option value="Grade 6">Grade 6</option>
+                      <option value="Grade 5">Grade 5</option>
+                      <option value="Grade 4">Grade 4</option>
+                      <option value="Grade 3">Grade 3</option>
+                      <option value="Grade 2">Grade 2</option>
+                      <option value="Grade 1">Grade 1</option>
+                      <option value="UKG">UKG</option>
+                      <option value="LKG">LKG</option>
+                      <option value="Nursery">Nursery / ECD</option>
                     </select>
                   </div>
                   <div className="form-group">
