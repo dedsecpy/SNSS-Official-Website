@@ -26,7 +26,7 @@ const mukta = Mukta({ subsets: ["devanagari"], weight: ["400", "700", "800"], va
       siteName: "Shree Narayan Secondary School",
       images: [
         {
-          url: "/block-a.png",
+          url: "/block-a-og.jpg",
           width: 1200,
           height: 630,
           alt: "Shree Narayan Secondary School",
@@ -39,7 +39,7 @@ const mukta = Mukta({ subsets: ["devanagari"], weight: ["400", "700", "800"], va
       card: "summary_large_image",
       title: "Shree Narayan Secondary School",
       description: "Quality education from ECD to Grade 12 in Ishworpur Municipality.",
-      images: ["/block-a.png"],
+      images: ["/block-a-og.jpg"],
     },
   };
   
@@ -54,7 +54,7 @@ const mukta = Mukta({ subsets: ["devanagari"], weight: ["400", "700", "800"], va
       "name": "Shree Narayan Secondary School",
       "url": "https://www.shreenarayan.edu.np",
       "logo": "https://www.shreenarayan.edu.np/logo.jpg",
-      "image": "https://www.shreenarayan.edu.np/block-a.png",
+      "image": "https://www.shreenarayan.edu.np/block-a-og.jpg",
       "description": "Official website of Shree Narayan Secondary School, providing quality education from ECD to Grade 12 in Ishworpur Municipality, Sarlahi, Nepal.",
       "address": {
         "@type": "PostalAddress",
