@@ -33,7 +33,7 @@ export const metadata: Metadata = {
       siteName: "Shree Narayan Secondary School",
       images: [
         {
-          url: "/block-a-og.jpg",
+          url: "/link_thumbnail.png",
           width: 1200,
           height: 630,
           alt: "Shree Narayan Secondary School",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
       card: "summary_large_image",
       title: "Shree Narayan Secondary School",
       description: "Quality education from ECD to Grade 12 in Ishworpur Municipality.",
-      images: ["/block-a-og.jpg"],
+      images: ["/link_thumbnail.png"],
     },
   };
   
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
       "name": "Shree Narayan Secondary School",
       "url": "https://www.shreenarayan.edu.np",
       "logo": "https://www.shreenarayan.edu.np/logo.jpg",
-      "image": "https://www.shreenarayan.edu.np/block-a-og.jpg",
+      "image": "https://www.shreenarayan.edu.np/link_thumbnail.png",
       "description": "Official website of Shree Narayan Secondary School, providing quality education from ECD to Grade 12 in Ishworpur Municipality, Sarlahi, Nepal.",
       "address": {
         "@type": "PostalAddress",
