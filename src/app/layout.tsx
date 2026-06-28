@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Outfit, Tiro_Devanagari_Hindi, Mukta } from "next/font/google";
 import "./globals.css";
 
@@ -11,7 +11,13 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-heading" });
 const tiroDevanagari = Tiro_Devanagari_Hindi({ subsets: ["devanagari"], weight: ["400"], style: ["italic"], variable: "--font-nepali" });
 const mukta = Mukta({ subsets: ["devanagari"], weight: ["400", "700", "800"], variable: "--font-mukta" });
 
-  export const metadata: Metadata = {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
+export const metadata: Metadata = {
     metadataBase: new URL("https://www.shreenarayan.edu.np"),
     title: {
       default: "Shree Narayan Secondary School | Quality Education",
