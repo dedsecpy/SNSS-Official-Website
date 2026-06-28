@@ -86,6 +86,67 @@
   transform: translateX(4px);
 }
 
+/* Connect Buttons */
+.connectButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.875rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  width: 100%;
+}
+
+.socialLink:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.socialIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1877f2; /* Facebook Blue */
+  color: white;
+  flex-shrink: 0;
+}
+
+.gmailIconWrap {
+  background: #ea4335; /* Google Red */
+}
+
+.socialText {
+  display: flex;
+  flex-direction: column;
+}
+
+.socialTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-inverse);
+  line-height: 1.2;
+}
+
+.socialSub {
+  font-size: 0.75rem;
+  color: #a3a3a3;
+  margin-top: 0.2rem;
+}
+
 /* Contact */
 .contactList {
   display: flex;

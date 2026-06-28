@@ -8,6 +8,8 @@ import FacultySlider from "@/components/FacultySlider";
 import WaterRippleHero from "@/components/WaterRippleHero";
 import EventsCarousel from "@/components/EventsCarousel";
 import FacultyProfiles from "@/components/FacultyProfiles";
+import SuccessTree from "@/components/SuccessTree";
+import StampBadge from "@/components/StampBadge";
 
 export const revalidate = 0;
 
@@ -89,8 +91,6 @@ export default function Home() {
             <FadeInUp>
               <div className={styles.aboutGrid}>
                 <div className={styles.aboutImageWrapper}>
-                  <div className={styles.imageBackdrop}></div>
-                  <div className={styles.dotsPattern}></div>
                   <div className={styles.aboutImage}>
                     <Image
                       src="/block-A.png"
@@ -100,19 +100,19 @@ export default function Home() {
                       style={{ objectFit: "cover" }}
                       className={styles.schoolImg}
                     />
-                    <div className={styles.imageOverlay} />
                   </div>
                   
-                  {/* Floating Glass Badge */}
-                  <div className={styles.floatingBadge}>
-                    <div className={styles.badgeIcon}>
-                      <Trophy size={24} />
+                  {/* Formal Official Award Badge */}
+                  <StampBadge delay={1.2} className={styles.awardBadge}>
+                    <div className={styles.awardRibbonLeft}></div>
+                    <div className={styles.awardRibbonRight}></div>
+                    <div className={styles.awardMedal}>
+                      <div className={styles.awardMedalInner}>
+                        <span className={styles.awardNumber}><AnimatedNumber endValue={63} /></span>
+                        <span className={styles.awardText}>Years<br/>Of Service</span>
+                      </div>
                     </div>
-                    <div className={styles.badgeText}>
-                      <span className={styles.badgeTitle}><AnimatedNumber endValue={63} />+ Years</span>
-                      <span className={styles.badgeSub}>Of Excellence</span>
-                    </div>
-                  </div>
+                  </StampBadge>
                 </div>
                 
                 <div className={styles.aboutContent}>
@@ -185,8 +185,8 @@ export default function Home() {
                   <div className={styles.principalSignature}>
                     <div className={styles.signatureLine}></div>
                     <div>
-                      <div className={styles.principalName}>Mr. Phaniraj Baral</div>
-                      <div className={styles.principalTitle}>Principal, Shree Narayan Secondary School</div>
+                      <span className={styles.principalName} style={{ display: 'block' }}>Mr. Phaniraj Baral</span>
+                      <span className={styles.principalTitle} style={{ display: 'block' }}>Principal, Shree Narayan Secondary School</span>
                     </div>
                   </div>
                 </div>
@@ -232,7 +232,7 @@ export default function Home() {
             <div className={styles.programsGrid}>
               {/* Science */}
               <FadeInUp delay={0.1} className={styles.programBento1}>
-                <Link href="/academics/science" className={`${styles.programCard} glass`}>
+                <Link href="/academics/science" className={styles.programCard}>
                   <div className={styles.programIcon} style={{ background: "rgba(59, 130, 246, 0.1)", color: "#3b82f6" }}>
                     <Microscope size={28} />
                   </div>
@@ -248,7 +248,7 @@ export default function Home() {
 
               {/* Management */}
               <FadeInUp delay={0.2} className={styles.programBento2}>
-                <Link href="/academics/management" className={`${styles.programCard} glass`}>
+                <Link href="/academics/management" className={styles.programCard}>
                   <div className={styles.programIcon} style={{ background: "rgba(245, 158, 11, 0.1)", color: "#f59e0b" }}>
                     <BookOpen size={28} />
                   </div>
@@ -264,7 +264,7 @@ export default function Home() {
 
               {/* Education */}
               <FadeInUp delay={0.3} className={styles.programBento3}>
-                <Link href="/academics/education" className={`${styles.programCard} glass`}>
+                <Link href="/academics/education" className={styles.programCard}>
                   <div className={styles.programIcon} style={{ background: "rgba(34, 197, 94, 0.1)", color: "#22c55e" }}>
                     <GraduationCap size={28} />
                   </div>
@@ -280,7 +280,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* ─── Why Choose Us (Bento Box) ─── */}
+          {/* ─── Why Choose Us (Tree Diagram) ─── */}
           <section className={`section ${styles.whySection}`}>
             <FadeInUp>
               <div className="section-header">
@@ -292,69 +292,7 @@ export default function Home() {
               </div>
             </FadeInUp>
 
-            <div className={styles.whyGrid}>
-              <FadeInUp delay={0.1} className={styles.bento1}>
-                <div className={`${styles.whyCard} ${styles.whyCardPrimary}`}>
-                  <div className={styles.whyCardImageWrapper}>
-                    <Image 
-                      src="/classroom_enhanced.png" 
-                      alt="Faculty Group"
-                      fill
-                      style={{ objectFit: 'cover', objectPosition: 'center bottom' }}
-                      className={styles.whyCardBgImage}
-                    />
-                    <div className={styles.whyCardOverlay} />
-                  </div>
-                  <div className={styles.whyIcon}>
-                    <GraduationCap size={32} />
-                  </div>
-                  <h3 className={styles.whyCardTitle}>Expert Faculty</h3>
-                  <p className={styles.whyCardDesc}>
-                    Highly experienced and dedicated educators committed to student growth. Our teachers use modern methodologies to engage students.
-                  </p>
-                </div>
-              </FadeInUp>
-
-              <FadeInUp delay={0.2} className={styles.bento2}>
-                <div className={`${styles.whyCard} ${styles.whyCardMuted}`}>
-                  <div className={styles.whyIcon}>
-                    <Microscope size={24} />
-                  </div>
-                  <h3 className={styles.whyCardTitle}>Modern Labs</h3>
-                  <p className={styles.whyCardDesc}>
-                    Fully equipped science labs and computer facilities.
-                  </p>
-                </div>
-              </FadeInUp>
-
-              <FadeInUp delay={0.3} className={styles.bento3}>
-                <div className={`${styles.whyCard} ${styles.whyCardSubtle}`}>
-                  <div className={styles.whyIcon}>
-                    <Trophy size={24} />
-                  </div>
-                  <h3 className={styles.whyCardTitle}>Proven Results</h3>
-                  <p className={styles.whyCardDesc}>
-                    Consistently outstanding performance in board examinations.
-                  </p>
-                </div>
-              </FadeInUp>
-
-              <FadeInUp delay={0.4} className={styles.bento4}>
-                <div className={`${styles.whyCard} glass`}>
-                  <div className={styles.whyContentRow}>
-                    <div className={styles.whyIcon}>
-                      <Users size={24} />
-                    </div>
-                    <div>
-                      <h3 className={styles.whyCardTitle}>Holistic Growth</h3>
-                      <p className={styles.whyCardDesc}>
-                        Focus on sports, arts, debates, and extracurricular development.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </FadeInUp>
-            </div>
+            <SuccessTree />
           </section>
         </div>
 
