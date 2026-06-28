@@ -18,14 +18,7 @@ export default function Footer() {
 
 
 
-          {/* Resources */}
-          <div>
-            <h4 className={styles.heading}>Resources</h4>
-            <ul className={styles.linkList}>
-              <li><Link href="/contact" className={styles.link}>Contact</Link></li>
 
-            </ul>
-          </div>
 
           {/* Contact */}
           <div>
