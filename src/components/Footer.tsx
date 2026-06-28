@@ -16,9 +16,23 @@ export default function Footer() {
             </p>
           </div>
 
-
-
-
+          {/* Facebook */}
+          <div>
+            <h4 className={styles.heading}>Facebook</h4>
+            <div className={styles.mapContainer}>
+              <iframe
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fnarayansecondaryschool&tabs=&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+                width="100%"
+                height="130"
+                style={{ border: "none", overflow: "hidden" }}
+                scrolling="no"
+                frameBorder="0"
+                allowFullScreen={true}
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                title="Facebook Page"
+              />
+            </div>
+          </div>
 
           {/* Contact */}
           <div>
