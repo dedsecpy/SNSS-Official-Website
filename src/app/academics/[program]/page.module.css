@@ -172,5 +172,55 @@
   
   .classCard {
     padding: 1.5rem;
+    min-width: 0; /* Prevents grid blowout */
+  }
+
+  .tableWrapper {
+    border: none;
+    background: transparent;
+    overflow-x: visible;
+  }
+
+  /* Stack table on mobile for better readability */
+  .officialTable thead {
+    display: none;
+  }
+
+  .officialTable, 
+  .officialTable tbody, 
+  .officialTable tr, 
+  .officialTable td {
+    display: block;
+    width: 100%;
+  }
+
+  .officialTable tr {
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+
+  .officialTable tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .officialTable td {
+    padding: 1rem;
+    border: none;
+  }
+
+  .typeCol {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+  }
+
+  .officialList li {
+    font-size: 0.9375rem;
   }
 }
