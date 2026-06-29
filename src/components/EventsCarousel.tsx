@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import styles from "./EventsCarousel.module.css";
 import FadeInUp from "./FadeInUp";
 type EventProp = {
@@ -17,11 +18,8 @@ export default function EventsCarousel({ events }: { events: EventProp[] }) {
     <section className={styles.carouselSection}>
       <div className="container">
         <FadeInUp>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ textAlign: "center" }}>
             <h2 className={styles.sectionTitle}>HAPPENINGS AT SNSS</h2>
-            <Link href="/events" style={{ color: "var(--color-primary)", fontWeight: 600, textDecoration: "none" }}>
-              Explore all events →
-            </Link>
           </div>
         </FadeInUp>
         
@@ -70,6 +68,14 @@ export default function EventsCarousel({ events }: { events: EventProp[] }) {
             )
           })}
         </div>
+        
+        <FadeInUp delay={0.4}>
+          <div style={{ textAlign: "center", marginTop: "3rem" }}>
+            <Link href="/events" className="btn btn-primary" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.75rem 2rem", borderRadius: "var(--radius-full)", fontWeight: 600 }}>
+              Explore All Events <ArrowRight size={18} />
+            </Link>
+          </div>
+        </FadeInUp>
       </div>
     </section>
   );
