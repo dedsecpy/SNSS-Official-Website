@@ -117,7 +117,7 @@ export default async function Home() {
                     <div className={styles.awardMedal}>
                       <div className={styles.awardMedalInner}>
                         <span className={styles.awardNumber}><AnimatedNumber endValue={63} /></span>
-                        <span className={styles.awardText}>Years<br/>Of Excellence</span>
+                        <span className={styles.awardText}>Years of<br/>Excellence</span>
                       </div>
                     </div>
                   </StampBadge>
