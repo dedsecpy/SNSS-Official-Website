@@ -77,14 +77,14 @@ export default function Footer() {
                 <MapPin size={16} className={styles.contactIcon} />
                 <span>Keshargunj, Ishworpur 45801, Sarlahi</span>
               </div>
-              <div className={styles.contactItem}>
+              <a href="tel:9854027017" className={styles.contactItem} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <Phone size={16} className={styles.contactIcon} />
                 <span>9854027017</span>
-              </div>
-              <div className={styles.contactItem}>
+              </a>
+              <a href="mailto:narayanssks@gmail.com" className={styles.contactItem} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <Mail size={16} className={styles.contactIcon} />
                 <span>narayanssks@gmail.com</span>
-              </div>
+              </a>
             </div>
           </div>
           
