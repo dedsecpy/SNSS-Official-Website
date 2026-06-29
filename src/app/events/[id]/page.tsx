@@ -37,10 +37,6 @@ export default async function EventPage({ params }: { params: Promise<{ id: stri
               {dateMonth} {dateDay}
             </div>
             {/* Keeping placeholders in case we add time/location later */}
-            <div className={styles.metaItem}>
-              <Clock size={18} className={styles.metaIcon} />
-              TBA
-            </div>
           </div>
         </FadeInUp>
 

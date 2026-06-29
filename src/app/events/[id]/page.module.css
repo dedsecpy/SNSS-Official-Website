@@ -54,7 +54,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-md);
   overflow: hidden;
   margin-bottom: 3rem;
   box-shadow: var(--shadow-md);
