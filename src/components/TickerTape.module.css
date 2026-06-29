@@ -27,9 +27,7 @@
   gap: 0.5rem;
 }
 
-.tickerWrap:hover .ticker {
-  animation-play-state: paused;
-}
+
 
 @keyframes ticker {
   0% {
