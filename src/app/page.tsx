@@ -11,9 +11,17 @@ import FacultyProfiles from "@/components/FacultyProfiles";
 import SuccessTree from "@/components/SuccessTree";
 import StampBadge from "@/components/StampBadge";
 
+import { prisma } from "@/lib/prisma";
+
 export const revalidate = 0;
 
-export default function Home() {
+export default async function Home() {
+  const allEvents = await prisma.event.findMany();
+  // Sort descending by parsed date
+  const events = allEvents
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 9);
+
   return (
     <main>
       {/* ─── Hero ─── */}
@@ -299,7 +307,7 @@ export default function Home() {
       </div>
 
       {/* ─── Happenings / Events Carousel ─── */}
-      <EventsCarousel />
+      <EventsCarousel events={events} />
 
       {/* ─── Faculty Profiles ─── */}
       <section className="section" style={{ background: "var(--color-bg-subtle)", padding: "5rem 0", borderTop: "1px solid var(--color-border)" }}>

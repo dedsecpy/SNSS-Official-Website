@@ -42,6 +42,9 @@ export default async function AdminLayout({
           <Link href="/admin/faculty" className={styles.navLink}>
             <GraduationCap size={18} /> <span>Faculty Profiles</span>
           </Link>
+          <Link href="/admin/events" className={styles.navLink}>
+            <FileText size={18} /> <span>Events</span>
+          </Link>
         </nav>
 
         {/* Logout */}

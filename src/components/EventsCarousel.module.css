@@ -33,23 +33,45 @@
   padding: 0.5rem 0;
 }
 
+.eventsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
 .card {
-  width: calc(33.333vw - 2rem);
-  min-width: 320px;
-  max-width: 400px;
-  scroll-snap-align: start;
+  width: 100%;
   background: var(--color-bg-subtle);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  border-color: var(--color-border);
 }
 
 .imageWrapper {
   position: relative;
   width: 100%;
   height: 220px;
+  overflow: hidden;
+}
+
+/* Note: image scaling effect requires global targeting of img inside since Next/Image renders an img tag */
+.card:hover .imageWrapper > img {
+  transform: scale(1.05);
+}
+
+.imageWrapper > img {
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
 
 .dateBadge {
@@ -110,16 +132,14 @@
 }
 
 @media (max-width: 1024px) {
-  .card {
-    width: calc(50vw - 2rem);
+  .eventsGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .card {
-    width: calc(100vw - 3rem); /* Account for container padding */
-  }
-  .carouselTrack {
+  .eventsGrid {
+    grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
   }
 }
