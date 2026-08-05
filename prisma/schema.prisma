@@ -17,6 +17,7 @@ model Notice {
   content     String
   type        String   // "Notice", "Announcement", "Blog"
   isPublished Boolean  @default(true)
+  isPopup     Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -43,6 +44,7 @@ model Faculty {
   department       String
   researchInterest String
   description      String
+  category         String   @default("Teaching") // "Teaching", "Non-Teaching", "Board"
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 }

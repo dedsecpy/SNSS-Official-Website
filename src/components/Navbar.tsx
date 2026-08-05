@@ -37,6 +37,9 @@ export default function Navbar() {
         <div className={styles.center}>
           <Link href="/about" className={styles.link}>About</Link>
           <Link href="/academics" className={styles.link}>Programs</Link>
+          <Link href="/faculty" className={styles.link}>Staff</Link>
+          <Link href="/board-of-directors" className={styles.link}>Board</Link>
+          <Link href="/notices" className={styles.link}>Notices</Link>
           <Link href="/facilities" className={styles.link}>Facilities</Link>
           <Link href="/contact" className={styles.link}>Contact</Link>
         </div>
@@ -63,6 +66,9 @@ export default function Navbar() {
         <div className={styles.mobileMenu}>
           <Link href="/about" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>About</Link>
           <Link href="/academics" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Programs</Link>
+          <Link href="/faculty" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Staff</Link>
+          <Link href="/board-of-directors" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Board</Link>
+          <Link href="/notices" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Notices</Link>
           <Link href="/facilities" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Facilities</Link>
           <Link href="/contact" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Contact</Link>
           <hr className={styles.mobileDivider} />

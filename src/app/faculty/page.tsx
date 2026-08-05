@@ -7,9 +7,12 @@ import styles from "@/components/FacultyProfiles.module.css";
 export const revalidate = 0;
 
 export default async function AllFacultiesPage() {
-  const faculties = await prisma.faculty.findMany({
+  const allFaculties = await prisma.faculty.findMany({
     orderBy: { name: 'asc' }
   });
+
+  const teachingStaff = allFaculties.filter(f => f.category === "Teaching");
+  const nonTeachingStaff = allFaculties.filter(f => f.category === "Non-Teaching");
 
   return (
     <main style={{ minHeight: "100vh", backgroundColor: "var(--color-bg)", paddingTop: "8rem", paddingBottom: "5rem" }}>
@@ -35,42 +38,81 @@ export default async function AllFacultiesPage() {
               letterSpacing: "-0.02em",
               marginBottom: "1rem"
             }}>
-              Faculty Directory
+              Staff Directory
             </h1>
             <p style={{ color: "var(--color-text-secondary)", fontSize: "1.125rem", maxWidth: "600px", margin: "0 auto" }}>
-              Meet the dedicated educators who are committed to academic excellence and holistic student development.
+              Meet the dedicated educators and staff who are committed to academic excellence and holistic student development.
             </p>
           </div>
         </FadeInUp>
 
-        <div className={styles.grid}>
-          {faculties.map((faculty, idx) => (
-            <FadeInUp key={faculty.id} delay={0.1 + (idx % 6) * 0.1}>
-              <Link href={`/faculty/${faculty.id}`} style={{ textDecoration: 'none', color: 'inherit', display: 'block', height: '100%' }}>
-                <div className={styles.card}>
-                  <div className={styles.imageWrapper}>
-                    <Image 
-                      src={faculty.image} 
-                      alt={faculty.name} 
-                      fill 
-                      style={{ objectFit: 'cover', objectPosition: 'top center' }} 
-                    />
-                  </div>
-                  <div className={styles.info}>
-                    <h3 className={styles.name}>{faculty.name}</h3>
-                    <p className={styles.role}>{faculty.role}</p>
-                    <p className={styles.desc}>{faculty.description}</p>
-                  </div>
-                </div>
-              </Link>
-            </FadeInUp>
-          ))}
-          {faculties.length === 0 && (
-            <div style={{ gridColumn: "1 / -1", textAlign: "center", padding: "4rem", color: "var(--color-text-tertiary)" }}>
-              No faculty profiles available.
+        {teachingStaff.length > 0 && (
+          <div style={{ marginBottom: "4rem" }}>
+            <h2 style={{ fontSize: "2rem", fontWeight: 700, marginBottom: "2rem", borderBottom: "2px solid var(--color-border)", paddingBottom: "1rem" }}>
+              Teaching Staff
+            </h2>
+            <div className={styles.grid}>
+              {teachingStaff.map((faculty, idx) => (
+                <FadeInUp key={faculty.id} delay={0.1 + (idx % 6) * 0.1}>
+                  <Link href={`/faculty/${faculty.id}`} style={{ textDecoration: 'none', color: 'inherit', display: 'block', height: '100%' }}>
+                    <div className={styles.card}>
+                      <div className={styles.imageWrapper}>
+                        <Image 
+                          src={faculty.image} 
+                          alt={faculty.name} 
+                          fill 
+                          style={{ objectFit: 'cover', objectPosition: 'top center' }} 
+                        />
+                      </div>
+                      <div className={styles.info}>
+                        <h3 className={styles.name}>{faculty.name}</h3>
+                        <p className={styles.role}>{faculty.role}</p>
+                        <p className={styles.desc}>{faculty.description}</p>
+                      </div>
+                    </div>
+                  </Link>
+                </FadeInUp>
+              ))}
             </div>
-          )}
-        </div>
+          </div>
+        )}
+
+        {nonTeachingStaff.length > 0 && (
+          <div>
+            <h2 style={{ fontSize: "2rem", fontWeight: 700, marginBottom: "2rem", borderBottom: "2px solid var(--color-border)", paddingBottom: "1rem" }}>
+              Non-Teaching Staff
+            </h2>
+            <div className={styles.grid}>
+              {nonTeachingStaff.map((faculty, idx) => (
+                <FadeInUp key={faculty.id} delay={0.1 + (idx % 6) * 0.1}>
+                  <Link href={`/faculty/${faculty.id}`} style={{ textDecoration: 'none', color: 'inherit', display: 'block', height: '100%' }}>
+                    <div className={styles.card}>
+                      <div className={styles.imageWrapper}>
+                        <Image 
+                          src={faculty.image} 
+                          alt={faculty.name} 
+                          fill 
+                          style={{ objectFit: 'cover', objectPosition: 'top center' }} 
+                        />
+                      </div>
+                      <div className={styles.info}>
+                        <h3 className={styles.name}>{faculty.name}</h3>
+                        <p className={styles.role}>{faculty.role}</p>
+                        <p className={styles.desc}>{faculty.description}</p>
+                      </div>
+                    </div>
+                  </Link>
+                </FadeInUp>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {teachingStaff.length === 0 && nonTeachingStaff.length === 0 && (
+          <div style={{ textAlign: "center", padding: "4rem", color: "var(--color-text-tertiary)" }}>
+            No staff profiles available.
+          </div>
+        )}
 
       </div>
     </main>

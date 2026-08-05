@@ -5,6 +5,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TickerTape from "@/components/TickerTape";
+import PopAnnouncement from "@/components/PopAnnouncement";
+import { prisma } from "@/lib/prisma";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-heading" });
@@ -50,11 +52,16 @@ export const metadata: Metadata = {
     },
   };
   
-  export default function RootLayout({
+  export default async function RootLayout({
     children,
   }: Readonly<{
     children: React.ReactNode;
   }>) {
+    const latestAnnouncement = await prisma.notice.findFirst({
+      where: { isPopup: true, isPublished: true },
+      orderBy: { createdAt: "desc" },
+    });
+
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "EducationalOrganization",
@@ -79,6 +86,7 @@ export const metadata: Metadata = {
         />
       </head>
       <body className={`${inter.variable} ${outfit.variable} ${tiroDevanagari.variable} ${mukta.variable}`} suppressHydrationWarning>
+        <PopAnnouncement announcement={latestAnnouncement} />
         <TickerTape />
         <Navbar />
         {children}

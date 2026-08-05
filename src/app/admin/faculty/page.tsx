@@ -18,6 +18,7 @@ async function createFaculty(formData: FormData) {
   const department = formData.get("department") as string;
   const researchInterest = formData.get("researchInterest") as string;
   const description = formData.get("description") as string;
+  const category = formData.get("category") as string || "Teaching";
   const imageFile = formData.get("image") as File;
   
   let imageUrl = "/teacher1.jpg"; // Default fallback image
@@ -39,10 +40,11 @@ async function createFaculty(formData: FormData) {
   
   if (name && role) {
     await prisma.faculty.create({
-      data: { name, role, image: imageUrl, qualification, email, department, researchInterest, description },
+      data: { name, role, image: imageUrl, qualification, email, department, researchInterest, description, category },
     });
     revalidatePath("/admin/faculty");
     revalidatePath("/faculty");
+    revalidatePath("/board-of-directors");
     revalidatePath("/");
   }
 }
@@ -104,6 +106,14 @@ export default async function AdminFaculty() {
               <textarea name="description" required className="form-input" rows={4} placeholder="Detailed bio..."></textarea>
             </div>
             <div className="form-group">
+              <label className="form-label">Category</label>
+              <select name="category" required className="form-input">
+                <option value="Teaching">Teaching Staff</option>
+                <option value="Non-Teaching">Non-Teaching Staff</option>
+                <option value="Board">Board of Directors</option>
+              </select>
+            </div>
+            <div className="form-group">
               <label className="form-label">Profile Image</label>
               <input type="file" name="image" accept="image/*" required className="form-input" style={{ padding: "0.5rem" }} />
               <p style={{ fontSize: "0.75rem", color: "var(--color-text-tertiary)", marginTop: "0.25rem" }}>
@@ -124,7 +134,9 @@ export default async function AdminFaculty() {
                   <div>
                     <h3 style={{ fontSize: "1.0625rem", fontWeight: 600, marginBottom: "0.2rem", letterSpacing: "-0.01em" }}>{faculty.name}</h3>
                     <p style={{ color: "var(--color-primary)", fontSize: "0.875rem", fontWeight: 500 }}>{faculty.role}</p>
-                    <p style={{ color: "var(--color-text-secondary)", fontSize: "0.8125rem", marginTop: "0.2rem" }}>{faculty.department}</p>
+                    <p style={{ color: "var(--color-text-secondary)", fontSize: "0.8125rem", marginTop: "0.2rem" }}>
+                      {faculty.department} &bull; <span style={{ fontWeight: 600 }}>{faculty.category}</span>
+                    </p>
                   </div>
                 </div>
                 <form action={deleteFaculty}>

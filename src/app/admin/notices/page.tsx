@@ -13,10 +13,11 @@ async function createNotice(formData: FormData) {
   const title = formData.get("title") as string;
   const content = formData.get("content") as string;
   const type = formData.get("type") as string;
+  const isPopup = formData.get("isPopup") === "true";
   
   if (title && content && type) {
     await prisma.notice.create({
-      data: { title, content, type },
+      data: { title, content, type, isPopup },
     });
     revalidatePath("/admin/notices");
     revalidatePath("/");
@@ -64,6 +65,10 @@ export default async function AdminNotices() {
               <label className="form-label">Content</label>
               <textarea name="content" required className="form-input" rows={6} placeholder="Write your content here…"></textarea>
             </div>
+            <div className="form-group" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <input type="checkbox" id="isPopup" name="isPopup" value="true" style={{ width: 'auto', height: '1.25rem', aspectRatio: '1/1', cursor: 'pointer' }} />
+              <label htmlFor="isPopup" className="form-label" style={{ margin: 0, cursor: 'pointer' }}>Show as Pop Announcement on Homepage</label>
+            </div>
             <button type="submit" className="btn btn-primary" style={{ width: "100%" }}>Publish Post</button>
           </form>
         </div>
@@ -88,6 +93,23 @@ export default async function AdminNotices() {
                   }}>
                     {notice.type}
                   </span>
+                  {notice.isPopup && (
+                    <span style={{
+                      display: "inline-block",
+                      fontSize: "0.75rem",
+                      fontWeight: 600,
+                      padding: "0.125rem 0.5rem",
+                      borderRadius: "var(--radius-full)",
+                      background: "rgba(220, 38, 38, 0.1)",
+                      color: "#dc2626",
+                      marginBottom: "0.5rem",
+                      marginLeft: "0.5rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.04em"
+                    }}>
+                      POPUP
+                    </span>
+                  )}
                   <h3 style={{ fontSize: "1.0625rem", fontWeight: 600, marginBottom: "0.375rem", letterSpacing: "-0.01em" }}>{notice.title}</h3>
                   <p style={{ color: "var(--color-text-secondary)", fontSize: "0.875rem", lineHeight: 1.6 }}>
                     {notice.content.substring(0, 150)}...
