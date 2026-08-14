@@ -114,4 +114,4 @@ The site utilizes a custom CSS-variable based design system tailored for a premi
 
 ## 📄 License & Copyright
 
-&copy; {Current Year} Shree Narayan Madhyamik Vidyalaya. All rights reserved.
+&copy; {Current Year} Shree Narayan Madhyamik Vidyalaya. All rights reserved...
